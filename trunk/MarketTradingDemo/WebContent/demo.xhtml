@@ -32,7 +32,6 @@
                             <rich:column>
                                 <h:outputText value="TickVol" />
                             </rich:column>
-                            
                         </rich:columnGroup>
                     </f:facet>
                     <rich:subTable
@@ -41,11 +40,9 @@
                         var="quote" value="#{quoteBean.quotes}">
                         <rich:column>
                             <h:outputText value="#{quote.title}"></h:outputText>
-                           
                         </rich:column>
                         <rich:column>
                             <h:outputText value="#{quote.bid}"></h:outputText>
-                            
                         </rich:column>
                         <rich:column>
                             <h:outputText value="#{quote.ask}"></h:outputText>
@@ -55,11 +52,8 @@
                         </rich:column>
                         <rich:column>
                             <h:outputText value="#{quote.tickVol}"></h:outputText>
-
                         </rich:column>                  
-                        
                     </rich:subTable>
-        
                 </rich:dataTable>
 		</a4j:form>
 	</f:view>
