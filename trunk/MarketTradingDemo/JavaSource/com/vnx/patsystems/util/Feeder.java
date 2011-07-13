@@ -2,8 +2,11 @@ package com.vnx.patsystems.util;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.market.trading.bean.delegate.QuoteBeanDelegate;
 import com.market.trading.model.Quote;
 
 import patsystems.api.delphi.*;
@@ -18,8 +21,10 @@ public class Feeder {
     private boolean isContractCounted;
     
     public ClientAPI clientAPI;
+    private QuoteBeanDelegate quoteBean = null;
     
-    public Feeder() {
+    public Feeder(QuoteBeanDelegate quoteBean) {
+    	this.quoteBean = quoteBean;
     	contractMap = new ArrayList<SubscribedItem>();
     	indexMap =  new ConcurrentHashMap<String, Integer>(); 
     	isContractCounted = false;
@@ -50,6 +55,10 @@ public class Feeder {
     	offerDOMs = new PriceDetail[contractMap.size()][];
     	symbols = new String[contractMap.size()];
     	
+    	//HUAN
+    	List<Quote> lstQuotes = new LinkedList<Quote>();
+    	Quote quote = null;
+    	
     	for(int index = 0; index < contractMap.size(); index++) {
     		try {
     			SubscribedItem item = contractMap.get(index);
@@ -69,6 +78,15 @@ public class Feeder {
     	    	tickVols[index] = "0";
     	    	bidDOMs[index] = null;
     	    	offerDOMs[index] = null;
+    	    	
+    	    	//HUAN
+    	    	quote = new Quote();
+    	    	quote.setTitle(symbols[index]);
+    	    	quote.setBid(bids[index]);
+    	    	quote.setAsk(offers[index]);
+    	    	quote.setLast(lasts[index]);
+    	    	quote.setTickVol(tickVols[index]);
+    	    	lstQuotes.add(quote);
     		}
     		catch (Exception e) {
     			e.printStackTrace();
@@ -76,6 +94,8 @@ public class Feeder {
         }
     	
     	//Initialize quote tables
+    	this.quoteBean.fillQuotes(lstQuotes);
+    	
     	Quote quoteTables[] = 
     		new Quote[contractMap.size()];
     	
@@ -145,33 +165,54 @@ public class Feeder {
     	Quote quoteTables[] = 
         	new Quote[contractMap.size()]; 
         
-    	for(int i = 0; i < contractMap.size(); i++) {
-    		exchange = exchanges[i];
-        	commodity = commodites[i];
-            contract = contracts[i];
-            
-            String symbol = exchange + "-" + commodity + "-" + contract.replace(" ", "");
-            
-            bid = bids[i];
-            offer = offers[i];
-            last = lasts[i];
-            tickVol  = tickVols[i];
-            
-            quoteTables[i] = new Quote();
-            quoteTables[i].setTitle(symbol);
-            quoteTables[i].setBid(bid);
-            quoteTables[i].setAsk(offer);
-            quoteTables[i].setLast(last);
-            quoteTables[i].setTickVol(tickVol);
-            
+//    	for(int i = 0; i < contractMap.size(); i++) {
+//    		exchange = exchanges[i];
+//        	commodity = commodites[i];
+//            contract = contracts[i];
+//            
+//            String symbol = exchange + "-" + commodity + "-" + contract.replace(" ", "");
+//            
+//            bid = bids[i];
+//            offer = offers[i];
+//            last = lasts[i];
+//            tickVol  = tickVols[i];
+//            
+//            quoteTables[i] = new Quote();
+//            quoteTables[i].setTitle(symbol);
+//            quoteTables[i].setBid(bid);
+//            quoteTables[i].setAsk(offer);
+//            quoteTables[i].setLast(last);
+//            quoteTables[i].setTickVol(tickVol);
+//            
+//            System.out.println("---------------------------------------------------------------");
+//            System.out.println(
+//            	itemKey + " " + index + " | " + symbol + " | " + bid + " | " + offer + " | " + last + " | " + tickVol
+//            );
+    		String symbol = exchanges[index] + "-" + commodites[index] + "-" + contracts[index].replace(" ", "");
+    		
             System.out.println("---------------------------------------------------------------");
             System.out.println(
-            	symbol + " | " + bid + " | " + offer + " | " + last + " | " + tickVol
-            );
-    	}
+            	itemKey + " " + index + " | " + symbol + " | " + bids[index] + " | " + offers[index] 
+            	 + " | " + lasts[index] + " | " + tickVols[index]);
+            Quote q = new Quote();
+            q.setTitle(symbol);
+            q.setBid(bids[index]);
+            q.setAsk(offers[index]);
+            q.setLast(lasts[index]);
+            q.setTickVol(tickVols[index]);
+            
+            quoteBean.updateRow(index, q);
     }
 
-    private class SubscribedItem {
+    public ArrayList<SubscribedItem> getContractMap() {
+		return contractMap;
+	}
+
+	public void setContractMap(ArrayList<SubscribedItem> contractMap) {
+		this.contractMap = contractMap;
+	}
+
+	public class SubscribedItem {
         protected String exchange;
         protected String commodity;
         protected String contract;
