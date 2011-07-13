@@ -23,5 +23,9 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/myfaces-impl-2.0.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl-api-1.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/richfaces-components-api-4.0.0.Final-sources.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/richfaces-components-api-4.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/richfaces-components-ui-4.0.0.Final-sources.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/richfaces-components-ui-4.0.0.Final.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
