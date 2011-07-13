@@ -9,20 +9,58 @@
   <body>
 	<f:view>
 		<a4j:form>
-			<rich:panel header="RichFaces Greeter" style="width: 315px">
-				<h:outputText value="Your name: " />
-				<h:inputText value="#{user.name}">
-					<f:validateLength minimum="1" maximum="30" />
-				</h:inputText>
+				<rich:dataTable 
+                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+                    cellpadding="0" cellspacing="0" 
+                    width="700" border="0" var="quoteBean" value="#{quoteBean}">
+                
+                    <f:facet name="header">
+                        <rich:columnGroup>
+                            <rich:column>
+                                <h:outputText value="Title" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Bid" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Ask" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Last" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="TickVol" />
+                            </rich:column>
+                            
+                        </rich:columnGroup>
+                    </f:facet>
+                    <rich:subTable
+                        onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+                        var="quote" value="#{quoteBean.quotes}">
+                        <rich:column>
+                            <h:outputText value="#{quote.title}"></h:outputText>
+                           
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{quote.bid}"></h:outputText>
+                            
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{quote.ask}"></h:outputText>
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{quote.last}"></h:outputText>
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{quote.tickVol}"></h:outputText>
 
-				<a4j:commandButton value="Get greeting" reRender="greeting" />
-
-				<h:panelGroup id="greeting">
-					<h:outputText value="Hello, " rendered="#{not empty user.name}" />
-					<h:outputText value="#{user.name}" />
-					<h:outputText value="!" rendered="#{not empty user.name}" />
-				</h:panelGroup>
-			</rich:panel>
+                        </rich:column>                  
+                        
+                    </rich:subTable>
+        
+                </rich:dataTable>
 		</a4j:form>
 	</f:view>
 </body>
