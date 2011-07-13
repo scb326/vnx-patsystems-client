@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment/>
+<entry key="Username">TESTAPI1</entry>
+<entry key="ApplicationID">MT5 TEST</entry>
+<entry key="DebugFlag">0</entry>
+<entry key="HostServer">116.12.231.238:20000</entry>
+<entry key="TimeRefresh">1000</entry>
+<entry key="Password">97fD8dT2rlXKxjhMdw2glA==</entry>
+<entry key="PriceServer">116.12.231.233:30000</entry>
+<entry key="FileDirectory">D:\MetaTrader 5 Platform\History\Datafeed</entry>
+<entry key="License">DBA670U001</entry>
+</properties>
