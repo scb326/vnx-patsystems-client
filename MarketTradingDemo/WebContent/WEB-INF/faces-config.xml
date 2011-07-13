@@ -6,7 +6,7 @@
   <description>QuoteBean</description>
   <managed-bean-name>quoteBean</managed-bean-name>
   <managed-bean-class>com.market.trading.bean.QuoteBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
   <managed-property>
    <property-name>quotes</property-name>
    <property-class>java.util.List</property-class>
