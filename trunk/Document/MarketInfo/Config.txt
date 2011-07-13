@@ -1,0 +1,15 @@
+User: VNEPATSAPI
+Pass: QQWWEE789
+Application ID: TPE QUOTES
+License: DBA670U001
+Host : 203.116.11.35:9412
+Price : 203.116.11.33:9410
+
+
+User: TESTAPI1
+Pass: 123456ABC
+Application ID: MT5 TEST
+License: DBA670U001
+Host JSIM: 116.12.231.238  (port 20000)
+Price JSIM: 116.12.231.233  (port 30000)
+

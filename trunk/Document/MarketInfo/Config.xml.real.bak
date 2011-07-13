@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment/>
+<entry key="Username">VNEPATSAPI</entry>
+<entry key="ApplicationID">TPE QUOTES</entry>
+<entry key="DebugFlag">255</entry>
+<entry key="HostServer">203.116.11.35:9412</entry>
+<entry key="TimeRefresh">1000</entry>
+<entry key="Password">/TlqfhwTbsX7Fki0AskRdg==</entry>
+<entry key="PriceServer">203.116.11.33:9410</entry>
+<entry key="FileDirectory">D:\MetaTrader 5 Platform\History\Datafeed</entry>
+<entry key="License">DBA670U001</entry>
+</properties>
