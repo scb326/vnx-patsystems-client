@@ -12,14 +12,11 @@
 			<rich:panel style="padding:0" headerClass="outpanelHeader">
 				<h:panelGrid columns="2" columnClasses="gridContent">
 					<rich:panel  bodyClass="inpanelBody">
-						<f:facet name="header">
-                    		For Table Info
-                		</f:facet>
                 		<h:panelGroup id="tradeBtnPanel">
                 			<h:commandButton  value="Filter" />
                 			<rich:spacer width="300"/>
-                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel" readonly="#{quoteBean.status == 'TRADE'}" value="Trade" />
-                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel" readonly="#{quoteBean.status == 'ORDER'}" value="Order" />
+                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel,inputTradePanel" readonly="#{quoteBean.status == 'TRADE'}" value="Trade" />
+                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel,inputTradePanel" readonly="#{quoteBean.status == 'ORDER'}" value="Order" />
                 		</h:panelGroup>
 						<h:panelGrid columns="2">
 							<h:panelGroup>
@@ -81,22 +78,30 @@
 					</rich:panel>
 					
 					
-					<rich:panel bodyClass="inpanelBody">
-						<f:facet name="header">
-                  			For Component Developers
-                		</f:facet>
-						<ul>
-							<li>Ajax4jsf is Open Source and has an Open Architecture</li>
-							<li>Gives an API to create components with built-in Ajax
-								support</li>
-							<li>Has a Component Development Kit for rapid development</li>
-							<li>Allows to skin the look-n-feel using both CSS and set of
-								skin-parameters</li>
-							<li>Automatically generates the unit test-cases for
-								developing components</li>
-							<li>Allows to pack javascript code, images, css inside the
-								final jar</li>
-						</ul>
+					<rich:panel bodyClass="inpanelBody" id="inputTradePanel">
+						<h:panelGroup>
+							<h:panelGrid columns="1">
+			                	<h:panelGrid columns="2">
+			                		<h:outputLabel value="Set Rate" rendered="#{quoteBean.status == 'ORDER'}"/>
+                					<rich:inputNumberSpinner value="0" step="1" rendered="#{quoteBean.status == 'ORDER'}"/>
+                					
+                					<h:outputLabel value="Risk Level"/>
+                					<rich:inputNumberSpinner value="100" step="1"/>
+                					
+                					<h:outputLabel value="Amount"/>
+                					<rich:inputNumberSpinner value="100" step="1"/>
+                					
+                					<h:outputLabel value="Stop Loss at"/>
+                					<rich:inputNumberSpinner value="100" step="1"/>
+                					
+                					<h:outputLabel value="Take Profit"/>
+                					<rich:inputNumberSpinner value="100" step="1"/>
+                					
+			                	</h:panelGrid>
+			                	<a4j:commandButton rendered="#{quoteBean.status == 'TRADE'}" value="Open Trade" />
+                				<a4j:commandButton rendered="#{quoteBean.status == 'ORDER'}" value="Crate Order" />
+                			</h:panelGrid>
+			            </h:panelGroup>
 					</rich:panel>
 				</h:panelGrid>
 			</rich:panel>
