@@ -55,9 +55,7 @@
                         </rich:column>                  
                     </rich:subTable>
                 </rich:dataTable>
-                <a4j:commandButton action="#{quoteBean.changeRowData}" id="btnAdd" value="Add" reRender="tblData">
-                	
-                </a4j:commandButton>
+                <a4j:poll id="poll" interval="1000" enabled="true" reRender="tblData"/>
 		</a4j:form>
 	</f:view>
 </body>

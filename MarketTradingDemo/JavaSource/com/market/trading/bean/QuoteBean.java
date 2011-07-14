@@ -17,9 +17,8 @@ public class QuoteBean implements QuoteBeanDelegate{
 	private static boolean isFeederReady = false;
 	private List<Quote> quotes = null;
 	private int index = 0;
-	private Feeder feeder = null;
 	private HtmlDataTable tblQuote;
-	
+
 	public HtmlDataTable getTblQuote() {
 		return tblQuote;
 	}
@@ -32,36 +31,9 @@ public class QuoteBean implements QuoteBeanDelegate{
 	public void initData(){
 		if(!isFeederReady) {
 			isFeederReady = true;
-			feeder = new Feeder(this);
+			new Feeder(this);
 		}
 		
-//		quotes = new ArrayList<Quote>();
-//		for (int i = 0; i < 5; i++) {
-//			Quote q = new Quote();
-//			q.setAsk("Ask" + i);
-//			q.setBid("Bid" + i);
-//			q.setLast("Last" + i);
-//			q.setTitle("Title" + i);
-//			q.setTickVol("Tick" + i);
-//			quotes.add(q);
-//		}
-	}
-	
-	public void changeRowData() {
-		Quote q = null;
-		
-		if (quotes != null && quotes.size() > index) {
-			q = quotes.get(index);
-			q.setAsk(q.getAsk() + "!");
-			q.setBid(q.getBid() + "!");
-			q.setLast(q.getLast() + "!");
-			q.setTickVol(q.getTickVol() + "!");
-			q.setTitle(q.getTitle() + "!");
-			index++;
-			System.out.println(q.getAsk() + " - " + q.getBid() + " - " + q.getLast() + " - " + q.getTickVol());
-		} else {
-			index = 0;
-		}
 	}
 	
 	public List<Quote> getQuotes() {
@@ -75,9 +47,7 @@ public class QuoteBean implements QuoteBeanDelegate{
 	@Override
 	public void fillQuotes(List<Quote> lstQuotes) {
 		if (lstQuotes != null) {
-			System.out.println(lstQuotes.size() + " - " + tblQuote.getId());
 			quotes = lstQuotes;
-			tblQuote.setRendered(true);
 		} else {
 			System.out.println("Nulllll");
 		}
@@ -91,7 +61,6 @@ public class QuoteBean implements QuoteBeanDelegate{
 			quotes.get(index).setBid(updatedQuote.getBid());
 			quotes.get(index).setLast(updatedQuote.getLast());
 			quotes.get(index).setTickVol(updatedQuote.getTickVol());
-			tblQuote.setRendered(true);
 		}
 	}
 }
