@@ -8,6 +8,6 @@
 <title>Demo</title>
 </head>
 <body>
-	<jsp:forward page="/demo.jsf" />
+	<jsp:forward page="/demoLayout.jsf" />
 </body>
 </html>

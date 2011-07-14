@@ -13,7 +13,7 @@ public class ClientAPI {
 	
     private final String COPYRIGHT = "Copyright (c) Patsystems UK Limited 2000-2007";
     private final String wrapperFileName = "JavaWrapper.dll";    
-    private final String workingDir = "E:\\Workspace\\J2EE Workspace\\MarketTradingDemo\\" +
+    private final String workingDir = "C:\\workspace\\MarketTradingDemo" +
 	"\\lib\\";
     
     private final String hostServer = "203.116.11.35:9412";
