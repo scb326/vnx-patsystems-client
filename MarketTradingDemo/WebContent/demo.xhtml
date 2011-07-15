@@ -13,6 +13,9 @@
    padding:0px;margin:0px;
    overflow: auto;
   }
+  .outputText1 {
+  	background-color:#ff0000;
+  }
 </style></head>
   <body>
 	<f:view>
@@ -28,10 +31,10 @@
                     <f:facet name="header">
                         <rich:columnGroup>
                             <rich:column>
-                                <h:outputText value="Title" />
+                                <h:outputText value="Title"/>
                             </rich:column>
                             <rich:column>
-                                <h:outputText value="Bid" />
+                                <h:outputText value="Bid"/>
                             </rich:column>
                             <rich:column>
                                 <h:outputText value="Ask" />
@@ -53,20 +56,24 @@
                         </rich:column>
                         <rich:column>
                             <h:outputText value="#{quote.bid}"></h:outputText>
+                            <h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
                         </rich:column>
                         <rich:column>
                             <h:outputText value="#{quote.ask}"></h:outputText>
+                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
                         </rich:column>
                         <rich:column>
                             <h:outputText value="#{quote.last}"></h:outputText>
+                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
                         </rich:column>
                         <rich:column>
                             <h:outputText value="#{quote.tickVol}"></h:outputText>
+                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
                         </rich:column>                  
                     </rich:subTable>
                 </rich:dataTable>
     		</rich:panel>
-            <a4j:poll id="poll" interval="1000" enabled="true" reRender="tblData"/>
+            <a4j:poll id="poll" interval="500" enabled="true" reRender="tblData"/>
 		</a4j:form>
 	</f:view>
 </body>

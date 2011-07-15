@@ -8,6 +8,15 @@ public class Quote {
 	private String last;
 	private String tickVol;
 	
+	private boolean bidUpdated = false;
+	private String bidStatus = "";
+	private boolean askUpdated = false;
+	private String askStatus = "";
+	private boolean lastUpdated = false;
+	private String lastStatus = "";
+	private boolean tickVolUpdated = false;
+	private String tickVolStatus = "";
+	
 	public Quote() {
 		title = "";
 		bid = "0";
@@ -54,5 +63,69 @@ public class Quote {
 	
 	public void setTickVol(String tickVol) {
 		this.tickVol = tickVol;
+	}
+
+	public String getBidStatus() {
+		return bidStatus;
+	}
+
+	public void setBidStatus(String bidStatus) {
+		this.bidStatus = bidStatus;
+	}
+
+	public String getAskStatus() {
+		return askStatus;
+	}
+
+	public void setAskStatus(String askStatus) {
+		this.askStatus = askStatus;
+	}
+
+	public String getLastStatus() {
+		return lastStatus;
+	}
+
+	public void setLastStatus(String lastStatus) {
+		this.lastStatus = lastStatus;
+	}
+
+	public String getTickVolStatus() {
+		return tickVolStatus;
+	}
+
+	public void setTickVolStatus(String tickVolStatus) {
+		this.tickVolStatus = tickVolStatus;
+	}
+
+	public boolean isBidUpdated() {
+		return bidUpdated;
+	}
+
+	public void setBidUpdated(boolean bidUpdated) {
+		this.bidUpdated = bidUpdated;
+	}
+
+	public boolean isAskUpdated() {
+		return askUpdated;
+	}
+
+	public void setAskUpdated(boolean askUpdated) {
+		this.askUpdated = askUpdated;
+	}
+
+	public boolean isLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(boolean lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
+
+	public boolean isTickVolUpdated() {
+		return tickVolUpdated;
+	}
+
+	public void setTickVolUpdated(boolean tickVolUpdated) {
+		this.tickVolUpdated = tickVolUpdated;
 	}
 }
