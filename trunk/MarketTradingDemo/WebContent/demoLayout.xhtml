@@ -105,20 +105,20 @@
 					</rich:panel>
 				</h:panelGrid>
 				
-				<rich:tabPanel>
-			        <rich:tab label="Open Trades">
+				<rich:tabPanel switchType="client" id = "tabId">
+			        <rich:tab reRender="tabId" label="Open Trades">
 			            Open trades tab
-			        </rich:tab>
-			        <rich:tab label="Orders">
+			        </rich:tab >
+			        <rich:tab reRender="tabId" label="Orders">
 			            Orders tab
 			        </rich:tab>
-			        <rich:tab label="History">
+			        <rich:tab reRender="tabId" label="History">
 			           	History tab
 			        </rich:tab>
-			        <rich:tab label="Chart">
+			        <rich:tab reRender="tabId" label="Chart">
 			            Chart tab
 			        </rich:tab>
-			        <rich:tab label="Add Widget">
+			        <rich:tab reRender="tabId" label="Add Widget">
 			            Add Widget tab
 			        </rich:tab>
    				 </rich:tabPanel>
