@@ -5,12 +5,19 @@
       xmlns:rich="http://richfaces.org/rich"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-		<style>
+<head><title>Demo</title>
+	<style type="text/css">
 		.alignTop {
 			vertical-align: top;
-		}
+		}  
+	  .body3 {
+	   height: 200px;
+	   width:520px;
+	   padding:0px;margin:0px;
+	   overflow: auto;
+	  }
 		</style>
-<head><title>Demo</title></head>
+</head>
   <body>
 	<f:view>
 		<a4j:form>
@@ -24,6 +31,7 @@
                 		</h:panelGroup>
 						<h:panelGrid>
 							<h:panelGroup>
+								<rich:panel bodyClass="body3" height="300px" width="400px">
 								<rich:dataTable 
 				                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
 				                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
@@ -70,6 +78,7 @@
 				                        </rich:column>                  
 				                    </rich:subTable>
 				                </rich:dataTable>
+				                </rich:panel>
 				                <a4j:poll id="poll" interval="1000" enabled="true" reRender="tblData"/>
 			                </h:panelGroup>
 			                
