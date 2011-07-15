@@ -12,16 +12,30 @@
 		}  
 	  .body3 {
 	   height: 200px;
-	   width:520px;
+	   width:100%;
 	   padding:0px;margin:0px;
 	   overflow: auto;
+	  }
+	  .adsPanel{
+	  		height: 600px;
+	  	 	width:15%;
+	  	 	vertical-align: top;
+	  }
+	  .mainPanel{
+	  	 	width:70%;
+	  	 	vertical-align: top;
 	  }
 		</style>
 </head>
   <body>
 	<f:view>
 		<a4j:form>
-			<rich:panel style="padding:0" headerClass="outpanelHeader">
+			<h:panelGrid columns="3" columnClasses="adsPanel,mainPanel,adsPanel">
+			<rich:panel style="padding:0" columnClasses="alignTop">
+				<h:outputText value="For Ads"/>
+				<rich:spacer height='320px'/>
+			</rich:panel>
+			<rich:panel style="padding:0" >
 				<h:panelGrid columns="2" columnClasses="alignTop, alignTop">
 					<rich:panel width='50%'  bodyClass="inpanelBody">
                 		<h:panelGroup id="tradeBtnPanel">
@@ -31,7 +45,7 @@
                 		</h:panelGroup>
 						<h:panelGrid>
 							<h:panelGroup>
-								<rich:panel bodyClass="body3" height="300px" width="400px">
+								<rich:panel bodyClass="body3">
 								<rich:dataTable 
 				                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
 				                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
@@ -141,6 +155,11 @@
 			        </rich:tab>
    				 </rich:tabPanel>
 			</rich:panel>
+			<rich:panel style="padding:0" >
+				<h:outputText value="For Ads"/>
+				<rich:spacer height='320px'/>
+			</rich:panel>
+		</h:panelGrid>
 		</a4j:form>
 	</f:view>
 </body>
