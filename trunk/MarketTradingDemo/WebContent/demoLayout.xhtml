@@ -5,12 +5,17 @@
       xmlns:rich="http://richfaces.org/rich"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-  <head><title>Demo</title></head>
+		<style>
+		.alignTop {
+			vertical-align: top;
+		}
+		</style>
+<head><title>Demo</title></head>
   <body>
 	<f:view>
 		<a4j:form>
 			<rich:panel style="padding:0" headerClass="outpanelHeader">
-				<h:panelGrid columns="2" columnClasses="gridContent">
+				<h:panelGrid columns="2" columnClasses="alignTop, alignTop">
 					<rich:panel width='50%'  bodyClass="inpanelBody">
                 		<h:panelGroup id="tradeBtnPanel">
                 			<rich:spacer width="400"/>
