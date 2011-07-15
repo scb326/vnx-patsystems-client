@@ -11,14 +11,13 @@
 		<a4j:form>
 			<rich:panel style="padding:0" headerClass="outpanelHeader">
 				<h:panelGrid columns="2" columnClasses="gridContent">
-					<rich:panel  bodyClass="inpanelBody">
+					<rich:panel width='50%'  bodyClass="inpanelBody">
                 		<h:panelGroup id="tradeBtnPanel">
-                			<h:commandButton  value="Filter" />
-                			<rich:spacer width="300"/>
-                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel,inputTradePanel" readonly="#{quoteBean.status == 'TRADE'}" value="Trade" />
-                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel,inputTradePanel" readonly="#{quoteBean.status == 'ORDER'}" value="Order" />
+                			<rich:spacer width="400"/>
+                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel,inputTradePanel" disabled="#{quoteBean.status != 'TRADE'}" value="Trade" />
+                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel,inputTradePanel" disabled="#{quoteBean.status != 'ORDER'}" value="Order" />
                 		</h:panelGroup>
-						<h:panelGrid columns="2">
+						<h:panelGrid>
 							<h:panelGroup>
 								<rich:dataTable 
 				                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
@@ -68,12 +67,7 @@
 				                </rich:dataTable>
 				                <a4j:poll id="poll" interval="1000" enabled="true" reRender="tblData"/>
 			                </h:panelGroup>
-			                <h:panelGroup>
-			                	<h:panelGrid columns="1">
-			                		<h:commandButton  value="Buy" />
-                					<h:commandButton  value="Sell" />
-			                	</h:panelGrid>
-			                </h:panelGroup>
+			                
 						</h:panelGrid>
 					</rich:panel>
 					
@@ -96,14 +90,34 @@
                 					
                 					<h:outputLabel value="Take Profit"/>
                 					<rich:inputNumberSpinner value="100" step="1"/>
-                					
 			                	</h:panelGrid>
-			                	<a4j:commandButton rendered="#{quoteBean.status == 'TRADE'}" value="Open Trade" />
-                				<a4j:commandButton rendered="#{quoteBean.status == 'ORDER'}" value="Crate Order" />
+			                	<h:panelGrid columns="3">
+			                		<rich:spacer width="50"/>
+				                	<a4j:commandButton  value="Buy" />
+	                				<a4j:commandButton  value="Sell" />
+                				</h:panelGrid>
                 			</h:panelGrid>
 			            </h:panelGroup>
 					</rich:panel>
 				</h:panelGrid>
+				
+				<rich:tabPanel>
+			        <rich:tab label="Open Trades">
+			            Open trades tab
+			        </rich:tab>
+			        <rich:tab label="Orders">
+			            Orders tab
+			        </rich:tab>
+			        <rich:tab label="History">
+			           	History tab
+			        </rich:tab>
+			        <rich:tab label="Chart">
+			            Chart tab
+			        </rich:tab>
+			        <rich:tab label="Add Widget">
+			            Add Widget tab
+			        </rich:tab>
+   				 </rich:tabPanel>
 			</rich:panel>
 		</a4j:form>
 	</f:view>
