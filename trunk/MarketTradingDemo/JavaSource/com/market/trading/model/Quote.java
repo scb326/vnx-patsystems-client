@@ -10,13 +10,52 @@ public class Quote {
 	
 	private boolean bidUpdated = false;
 	private String bidStatus = "";
+	private String bidStyleClass = "";
+	
 	private boolean askUpdated = false;
 	private String askStatus = "";
+	private String askStyleClass = "";
+	
 	private boolean lastUpdated = false;
 	private String lastStatus = "";
+	private String lastStyleClass = "";
+	
 	private boolean tickVolUpdated = false;
 	private String tickVolStatus = "";
+	private String tickVolStyleClass = "";
 	
+	public String getBidStyleClass() {
+		return bidStyleClass;
+	}
+
+	public void setBidStyleClass(String bidStyleClass) {
+		this.bidStyleClass = bidStyleClass;
+	}
+
+	public String getAskStyleClass() {
+		return askStyleClass;
+	}
+
+	public void setAskStyleClass(String askStyleClass) {
+		this.askStyleClass = askStyleClass;
+	}
+
+	public String getLastStyleClass() {
+		return lastStyleClass;
+	}
+
+	public void setLastStyleClass(String lastStyleClass) {
+		this.lastStyleClass = lastStyleClass;
+	}
+
+	public String getTickVolStyleClass() {
+		return tickVolStyleClass;
+	}
+
+	public void setTickVolStyleClass(String tickVolStyleClass) {
+		this.tickVolStyleClass = tickVolStyleClass;
+	}
+
 	public Quote() {
 		title = "";
 		bid = "0";

@@ -74,6 +74,10 @@ public class QuoteBean implements QuoteBeanDelegate{
 				quotes.get(lastUpdated).setBidUpdated(false);
 				quotes.get(lastUpdated).setLastUpdated(false);
 				quotes.get(lastUpdated).setTickVolUpdated(false);
+				quotes.get(lastUpdated).setAskStyleClass("");
+				quotes.get(lastUpdated).setBidStyleClass("");
+				quotes.get(lastUpdated).setLastStyleClass("");
+				quotes.get(lastUpdated).setTickVolStyleClass("");
 			}
 			
 			//quotes.get(index).setTitle(updatedQuote.getTitle());
@@ -95,9 +99,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setAskUpdated(true);
 				quotes.get(index).setAskStatus("inc");
+				quotes.get(index).setAskStyleClass("updated_cell");
 			} else if (newVal < oldVal) {
 				quotes.get(index).setAskUpdated(true);
 				quotes.get(index).setAskStatus("dec");
+				quotes.get(index).setAskStyleClass("updated_cell");
 			}
 			quotes.get(index).setAsk(updatedQuote.getAsk());
 			
@@ -117,9 +123,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setBidUpdated(true);
 				quotes.get(index).setBidStatus("inc");
+				quotes.get(index).setBidStyleClass("updated_cell");
 			} else if (newVal < oldVal) {
 				quotes.get(index).setBidUpdated(true);
 				quotes.get(index).setBidStatus("dec");
+				quotes.get(index).setBidStyleClass("updated_cell");
 			}
 			quotes.get(index).setBid(updatedQuote.getBid());
 			
@@ -140,9 +148,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setLastUpdated(true);
 				quotes.get(index).setLastStatus("inc");
+				quotes.get(index).setLastStyleClass("updated_cell");
 			} else if (newVal < oldVal) {
 				quotes.get(index).setLastUpdated(true);
 				quotes.get(index).setLastStatus("dec");
+				quotes.get(index).setLastStyleClass("updated_cell");
 			}
 			quotes.get(index).setLast(updatedQuote.getLast());
 			
@@ -162,9 +172,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setTickVolUpdated(true);
 				quotes.get(index).setTickVolStatus("inc");
+				quotes.get(index).setTickVolStyleClass("updated_cell");
 			} else if (newVal < oldVal) {
 				quotes.get(index).setTickVolUpdated(true);
 				quotes.get(index).setTickVolStatus("dec");
+				quotes.get(index).setTickVolStyleClass("updated_cell");
 			}
 			quotes.get(index).setTickVol(updatedQuote.getTickVol());
 			
