@@ -16,6 +16,9 @@
   .outputText1 {
   	background-color:#ff0000;
   }
+  .updated_cell {
+	  	color:blue;
+	  }
 </style></head>
   <body>
 	<f:view>
@@ -55,21 +58,21 @@
                             <h:outputText value="#{quote.title}"></h:outputText>
                         </rich:column>
                         <rich:column>
-                            <h:outputText value="#{quote.bid}"></h:outputText>
+                            <h:outputText value="#{quote.bid}" styleClass="#{quote.bidStyleClass}"></h:outputText>
                             <h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
                         </rich:column>
                         <rich:column>
-                            <h:outputText value="#{quote.ask}"></h:outputText>
+                            <h:outputText value="#{quote.ask}" styleClass="#{quote.askStyleClass}"></h:outputText>
                             <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
                         </rich:column>
                         <rich:column>
-                            <h:outputText value="#{quote.last}"></h:outputText>
+                            <h:outputText value="#{quote.last}" styleClass="#{quote.lastStyleClass}"></h:outputText>
                             <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
                         </rich:column>
                         <rich:column>
-                            <h:outputText value="#{quote.tickVol}"></h:outputText>
+                            <h:outputText value="#{quote.tickVol}" styleClass="#{quote.tickVolStyleClass}"></h:outputText>
                             <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
-                        </rich:column>                  
+                        </rich:column>                
                     </rich:subTable>
                 </rich:dataTable>
     		</rich:panel>
