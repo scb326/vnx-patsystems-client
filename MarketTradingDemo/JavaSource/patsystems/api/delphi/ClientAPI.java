@@ -13,14 +13,14 @@ public class ClientAPI {
 	
     private final String COPYRIGHT = "Copyright (c) Patsystems UK Limited 2000-2007";
     private final String wrapperFileName = "JavaWrapper.dll";    
-    private final String workingDir = "C:\\workspace\\MarketTradingDemo" +
+    private final String workingDir = "E:\\Workspace\\J2EE Workspace\\MarketTradingDemo" +
 	"\\lib\\";
     
-    private final String hostServer = "203.116.11.35:9412";
-    private final String priceServer = "203.116.11.33:9410";
-    private final String username = "VNEPATSAPI";
-    private final String password = "QQWWEE789";
-    private final String applicationId = "TPE QUOTES";
+    private final String hostServer = "116.12.231.238:20000";
+    private final String priceServer = "116.12.231.233:30000";
+    private final String username = "TESTAPI";
+    private final String password = "ABC123";
+    private final String applicationId = "MT5 TEST";
     private final String license = "DBA670U001";
 
     public CallBackProcessor callbackThread;
