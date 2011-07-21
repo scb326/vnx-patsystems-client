@@ -1,170 +1,190 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a4j="http://richfaces.org/a4j"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-<head><title>Demo</title>
-	<style type="text/css">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<head>
+		<title>Demo</title>
+		<style type="text/css">
 		.alignTop {
 			vertical-align: top;
-		}  
-	  .body3 {
-	   height: 200px;
-	   width:500px;
-	   padding:0px;margin:0px;
-	   overflow: auto;
-	  }
-	  
-	  .updated_cell {
-	  	color:blue;
-	  }
-	  
-	  .adsPanel{
-	  		height: 600px;
-	  	 	width:15%;
-	  	 	vertical-align: top;
-	  }
-	  .mainPanel{
-	  	 	width:70%;
-	  	 	vertical-align: top;
-	  }
+		}
+
+		.body3 {
+			height: 200px;
+			width: 500px;
+			padding: 0px;
+			margin: 0px;
+			overflow: auto;
+		}
+		
+		.updated_cell {
+			color: blue;
+		}
+		
+		.adsPanel {
+			width:12%;
+			height: 600px;
+			vertical-align: top;
+		}
+		
+		.mainPanel {
+			vertical-align: top;
+		}
 		</style>
-</head>
-  <body>
+	</head>
+<body>
 	<f:view>
 		<a4j:form>
-			<h:panelGrid columns="3" columnClasses="adsPanel,mainPanel,adsPanel">
-			<rich:panel style="padding:0" columnClasses="alignTop">
-				<h:outputText value="For Ads"/>
-				<rich:spacer height='320px'/>
+			<rich:panel>
+				<!--  logo banner area -->
 			</rich:panel>
-			<rich:panel style="padding:0" >
-				<h:panelGrid columns="2" columnClasses="alignTop, alignTop">
-					<rich:panel width='50%'  bodyClass="inpanelBody">
-                		<h:panelGroup id="tradeBtnPanel">
-                			<rich:spacer width="400"/>
-                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel,inputTradePanel" disabled="#{quoteBean.status != 'TRADE'}" value="Trade" />
-                			<a4j:commandButton action="#{quoteBean.changeStatus}" reRender="tradeBtnPanel,inputTradePanel" disabled="#{quoteBean.status != 'ORDER'}" value="Order" />
-                		</h:panelGroup>
-						<h:panelGrid>
-							<h:panelGroup>
-								<rich:panel bodyClass="body3">
-								<rich:dataTable 
-				                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
-				                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
-				                    cellpadding="0" cellspacing="0"
-				                    width="480" border="0" var="quoteBean" value="#{quoteBean}" id="tblData" binding="#{quoteBean.tblQuote}">
-				                
-				                    <f:facet name="header">
-				                        <rich:columnGroup>
-				                            <rich:column width="40%">
-				                                <h:outputText value="Title"/>
-				                            </rich:column>
-				                            <rich:column width="15%">
-				                                <h:outputText value="Bid"/>
-				                            </rich:column>
-				                            <rich:column width="15%">
-				                                <h:outputText value="Ask" />
-				                            </rich:column>
-				                            <rich:column width="15%">
-				                                <h:outputText value="Last" />
-				                            </rich:column>
-				                            <rich:column width="15%">
-				                                <h:outputText value="TickVol" />
-				                            </rich:column>
-				                        </rich:columnGroup>
-				                    </f:facet>
-				                    <rich:subTable
-				                        onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
-				                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
-				                        var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
-				                        <rich:column>
-				                            <h:outputText value="#{quote.title}"></h:outputText>
-				                        </rich:column>
-				                        <rich:column>
-				                            <h:outputText value="#{quote.bid}" style="#{quote.bidStyleClass}"></h:outputText>
-				                            <h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
-				                        </rich:column>
-				                        <rich:column>
-				                            <h:outputText value="#{quote.ask}" style="#{quote.askStyleClass}"></h:outputText>
-				                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
-				                        </rich:column>
-				                        <rich:column>
-				                            <h:outputText value="#{quote.last}" style="#{quote.lastStyleClass}"></h:outputText>
-				                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
-				                        </rich:column>
-				                        <rich:column>
-				                            <h:outputText value="#{quote.tickVol}" style="#{quote.tickVolStyleClass}"></h:outputText>
-				                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
-				                        </rich:column>                
-				                    </rich:subTable>
-				                </rich:dataTable>
-				                </rich:panel>
-				                <a4j:poll id="poll" interval="500" enabled="true" reRender="tblData" action="#{quoteBean.refreshScreen}"/>
-			                </h:panelGroup>
-			                
+
+			<rich:panel>
+				<!-- User info area -->
+			</rich:panel>
+
+			<rich:panel>
+				<!-- main area -->
+				<h:panelGrid columns="3" width="100%" columnClasses="adsPanel,mainPanel,adsPanel">
+					<rich:panel style="padding:0" columnClasses="alignTop">
+						<!-- Left Ads area -->
+						<h:outputText value="For Ads" />
+						<rich:spacer height='320px' />
+					</rich:panel>
+	
+					<rich:panel style="padding:0">
+						<h:panelGrid columns="2" width="100%">
+							<rich:panel bodyClass="body3">
+								<rich:dataTable
+									onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+									onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+									cellpadding="0" cellspacing="0" width="480" border="0"
+									var="quoteBean" value="#{quoteBean}" id="tblData"
+									binding="#{quoteBean.tblQuote}">
+
+									<f:facet name="header">
+										<rich:columnGroup>
+											<rich:column width="40%">
+												<h:outputText value="Title" />
+											</rich:column>
+											<rich:column width="15%">
+												<h:outputText value="Bid" />
+											</rich:column>
+											<rich:column width="15%">
+												<h:outputText value="Ask" />
+											</rich:column>
+											<rich:column width="15%">
+												<h:outputText value="Last" />
+											</rich:column>
+											<rich:column width="15%">
+												<h:outputText value="TickVol" />
+											</rich:column>
+										</rich:columnGroup>
+									</f:facet>
+									<rich:subTable
+										onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+										onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+										var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
+										<rich:column>
+											<h:outputText value="#{quote.title}"></h:outputText>
+										</rich:column>
+										<rich:column>
+											<h:outputText value="#{quote.bid}"
+												style="#{quote.bidStyleClass}"></h:outputText>
+											<h:graphicImage value="/images/#{quote.bidStatus}.png"
+												rendered="#{quote.bidUpdated}" />
+										</rich:column>
+										<rich:column>
+											<h:outputText value="#{quote.ask}"
+												style="#{quote.askStyleClass}"></h:outputText>
+											<h:graphicImage value="/images/#{quote.askStatus}.png"
+												rendered="#{quote.askUpdated}" />
+										</rich:column>
+										<rich:column>
+											<h:outputText value="#{quote.last}"
+												style="#{quote.lastStyleClass}"></h:outputText>
+											<h:graphicImage value="/images/#{quote.lastStatus}.png"
+												rendered="#{quote.lastUpdated}" />
+										</rich:column>
+										<rich:column>
+											<h:outputText value="#{quote.tickVol}"
+												style="#{quote.tickVolStyleClass}"></h:outputText>
+											<h:graphicImage value="/images/#{quote.tickVolStatus}.png"
+												rendered="#{quote.tickVolUpdated}" />
+										</rich:column>
+									</rich:subTable>
+								</rich:dataTable>
+								<a4j:poll id="poll" interval="500" enabled="true"
+								reRender="tblData" action="#{quoteBean.refreshScreen}" />
+							</rich:panel>
+							
+							<rich:panel bodyClass="inpanelBody" height='300px'
+								id="inputTradePanel">
+								<h:panelGroup>
+									<h:panelGrid columns="1">
+										<h:panelGrid columns="2">
+											<h:outputLabel value="Set Rate"
+												rendered="#{quoteBean.status == 'ORDER'}" />
+											<rich:inputNumberSpinner value="0" step="1"
+												rendered="#{quoteBean.status == 'ORDER'}" />
+		
+											<h:outputLabel value="Risk Level" />
+											<rich:inputNumberSpinner value="100" step="1" />
+		
+											<h:outputLabel value="Amount" />
+											<rich:inputNumberSpinner value="100" step="1" />
+		
+											<h:outputLabel value="Stop Loss at" />
+											<rich:inputNumberSpinner value="100" step="1" />
+		
+											<h:outputLabel value="Take Profit" />
+											<rich:inputNumberSpinner value="100" step="1" />
+										</h:panelGrid>
+										<h:panelGrid columns="3">
+											<rich:spacer width="50" />
+											<a4j:commandButton value="Buy" />
+											<a4j:commandButton value="Sell" />
+										</h:panelGrid>
+										<h:panelGrid columns="2">
+											<h:selectBooleanCheckbox />
+											<h:outputText value="Carry Trade Over Weekend" />
+										</h:panelGrid>
+									</h:panelGrid>
+								</h:panelGroup>
+							</rich:panel>
+						
 						</h:panelGrid>
+						
+						<!-- Tab Area -->
+						<rich:tabPanel switchType="client" id="tabId">
+							<rich:tab reRender="tabId" label="Status">
+					            		Open trades tab
+							        </rich:tab>
+							<rich:tab reRender="tabId" label="Fills">
+							            Orders tab
+							        </rich:tab>
+							<rich:tab reRender="tabId" label="History">
+							           	History tab
+							        </rich:tab>
+							<rich:tab reRender="tabId" label="Chart">
+							            Chart tab
+							        </rich:tab>
+							<rich:tab reRender="tabId" label="Add Widget +">
+							            Add Widget tab
+							        </rich:tab>
+						</rich:tabPanel>
 					</rich:panel>
 					
-					
-					<rich:panel bodyClass="inpanelBody" height='300px' id="inputTradePanel">
-						<h:panelGroup>
-							<h:panelGrid columns="1">
-			                	<h:panelGrid columns="2">
-			                		<h:outputLabel value="Set Rate" rendered="#{quoteBean.status == 'ORDER'}"/>
-                					<rich:inputNumberSpinner value="0" step="1" rendered="#{quoteBean.status == 'ORDER'}"/>
-                					
-                					<h:outputLabel value="Risk Level"/>
-                					<rich:inputNumberSpinner value="100" step="1"/>
-                					
-                					<h:outputLabel value="Amount"/>
-                					<rich:inputNumberSpinner value="100" step="1"/>
-                					
-                					<h:outputLabel value="Stop Loss at"/>
-                					<rich:inputNumberSpinner value="100" step="1"/>
-                					
-                					<h:outputLabel value="Take Profit"/>
-                					<rich:inputNumberSpinner value="100" step="1"/>
-			                	</h:panelGrid>
-			                	<h:panelGrid columns="3">
-			                		<rich:spacer width="50"/>
-				                	<a4j:commandButton  value="Buy" />
-	                				<a4j:commandButton  value="Sell" />
-                				</h:panelGrid>
-                				<h:panelGrid columns="2">
-                					<h:selectBooleanCheckbox/>
-                					<h:outputText value="Carry Trade Over Weekend"/>
-                				</h:panelGrid>
-                			</h:panelGrid>
-			            </h:panelGroup>
+					<rich:panel style="padding:0" columnClasses="alignTop">
+						<!-- Right Ads area -->
+						<h:outputText value="For Ads" />
+						<rich:spacer height='320px' />
 					</rich:panel>
 				</h:panelGrid>
-				
-				<rich:tabPanel switchType="client" id = "tabId">
-			        <rich:tab reRender="tabId" label="Open Trades">
-			            Open trades tab
-			        </rich:tab >
-			        <rich:tab reRender="tabId" label="Orders">
-			            Orders tab
-			        </rich:tab>
-			        <rich:tab reRender="tabId" label="History">
-			           	History tab
-			        </rich:tab>
-			        <rich:tab reRender="tabId" label="Chart">
-			            Chart tab
-			        </rich:tab>
-			        <rich:tab reRender="tabId" label="Add Widget">
-			            Add Widget tab
-			        </rich:tab>
-   				 </rich:tabPanel>
 			</rich:panel>
-			<rich:panel style="padding:0" >
-				<h:outputText value="For Ads"/>
-				<rich:spacer height='320px'/>
-			</rich:panel>
-		</h:panelGrid>
 		</a4j:form>
 	</f:view>
 </body>
