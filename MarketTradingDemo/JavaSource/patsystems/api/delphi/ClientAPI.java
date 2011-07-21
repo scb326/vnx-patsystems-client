@@ -19,7 +19,7 @@ public class ClientAPI {
     private final String hostServer = "116.12.231.238:20000";
     private final String priceServer = "116.12.231.233:30000";
     private final String username = "TESTAPI2";
-    private final String password = "ABC123";
+    private final String password = "JSIM123";
     private final String applicationId = "MT5 TEST";
     private final String license = "DBA670U001";
 
