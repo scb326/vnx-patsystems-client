@@ -33,6 +33,16 @@
 		.mainPanel {
 			vertical-align: top;
 		}
+		
+		.tablePanel {
+			width:70%;
+			vertical-align: top;
+		}
+		
+		.tradePanel {
+			width:300px;
+			vertical-align: top;
+		}
 		</style>
 	</head>
 <body>
@@ -56,7 +66,7 @@
 					</rich:panel>
 	
 					<rich:panel style="padding:0">
-						<h:panelGrid columns="2" width="100%">
+						<h:panelGrid columns="2" columnClasses="tablePanel,tradePanel"  width="100%">
 							<rich:panel bodyClass="body3">
 								<rich:dataTable
 									onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
@@ -121,17 +131,69 @@
 								reRender="tblData" action="#{quoteBean.refreshScreen}" />
 							</rich:panel>
 							
-							<rich:panel bodyClass="inpanelBody" height='300px'
-								id="inputTradePanel">
-								<rich:tabPanel switchType="client" id="tradeTabId">
-									<rich:tab reRender="tradeTabId" label="Trade">
-					            		<!-- Trade Input area -->
-					            		<h:panelGrid columns="2">
-					            			
-					            		</h:panelGrid>
-							        </rich:tab>
-								</rich:tabPanel>
-							</rich:panel>
+							<rich:tabPanel  styleClass="tradePanel" switchType="client" id="tradeTabId">
+								<rich:tab reRender="tradeTabId" label="Trade">
+				            		<!-- Trade Input area -->
+				            		<h:panelGrid columns="2">
+				            			<h:outputText value="Exchange"/>
+				            			<h:selectOneMenu>
+											<f:selectItem itemLabel="SGX" itemValue="SGX"/>
+											<f:selectItem itemLabel="VNXSIM" itemValue="VNXSIM"/>
+										</h:selectOneMenu>
+				            		
+				            			<h:outputText value="Commodity"/>
+				            			<h:selectOneMenu>
+											<f:selectItem itemLabel="QCR" itemValue="QCR"/>
+											<f:selectItem itemLabel="R COFFEE" itemValue="R COFFEE"/>
+											<f:selectItem itemLabel="RUBBER" itemValue="RUBBER"/>
+											<f:selectItem itemLabel="SGXTSG20" itemValue="SGXTSG20"/>
+											<f:selectItem itemLabel="VCR" itemValue="VCR"/>
+											<f:selectItem itemLabel="VRSS3" itemValue="VRSS3"/>
+										</h:selectOneMenu>
+				            		
+				            			<h:outputText value="Contract Date"/>
+				            			<h:selectOneMenu>
+											<f:selectItem itemLabel="JAN" itemValue="JAN"/>
+											<f:selectItem itemLabel="FEB" itemValue="FEB"/>
+											<f:selectItem itemLabel="MAR" itemValue="MAR"/>
+											<f:selectItem itemLabel="APR" itemValue="APR"/>
+											<f:selectItem itemLabel="MAY" itemValue="MAY"/>
+											<f:selectItem itemLabel="JUN" itemValue="JUN"/>
+											<f:selectItem itemLabel="JUL" itemValue="JUL"/>
+											<f:selectItem itemLabel="AUG" itemValue="AUG"/>
+											<f:selectItem itemLabel="SEP" itemValue="SEP"/>
+											<f:selectItem itemLabel="OCT" itemValue="OCT"/>
+											<f:selectItem itemLabel="NOV" itemValue="NOV"/>
+											<f:selectItem itemLabel="DEC" itemValue="DEC"/>
+										</h:selectOneMenu>
+				            		
+				            			<h:outputText value="Order Type"/>
+				            			<h:selectOneMenu>
+											<f:selectItem itemLabel="Limit" itemValue="Limit"/>
+											<f:selectItem itemLabel="Limit FAK" itemValue="Limit FAK"/>
+											<f:selectItem itemLabel="Limit FOK" itemValue="Limit FOK"/>
+											<f:selectItem itemLabel="Market" itemValue="Market"/>
+											<f:selectItem itemLabel="Market FOK" itemValue="Market FOK"/>
+											<f:selectItem itemLabel="Mkt Limit" itemValue="Mkt Limit"/>
+											<f:selectItem itemLabel="RFQ" itemValue="RFQ"/>
+										</h:selectOneMenu>
+										
+										<h:outputText value="Lots"/>
+										<rich:inputNumberSpinner value="0"/>
+										
+										<h:outputText value="Price"/>
+										<h:inputText value="0"/>
+				            		</h:panelGrid>
+				            		
+				            		<h:panelGrid columns="3">
+					            		<h:selectOneRadio>
+											<f:selectItem id="si1" itemLabel="Open" itemValue="Open" />
+											<f:selectItem id="si2" itemLabel="Close" itemValue="Close" />
+										</h:selectOneRadio>
+									</h:panelGrid>
+									
+						        </rich:tab>
+							</rich:tabPanel>
 						
 						</h:panelGrid>
 						
