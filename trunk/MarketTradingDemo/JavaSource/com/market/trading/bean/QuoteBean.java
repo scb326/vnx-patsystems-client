@@ -11,6 +11,7 @@ import org.richfaces.component.html.HtmlDataTable;
 
 import com.market.trading.bean.delegate.QuoteBeanDelegate;
 import com.market.trading.model.Quote;
+import com.market.trading.model.TradeInfo;
 import com.vnx.patsystems.util.Feeder;
 
 public class QuoteBean implements QuoteBeanDelegate{
@@ -30,6 +31,7 @@ public class QuoteBean implements QuoteBeanDelegate{
 	private HtmlOutputText outTxtTickVol;
 	private String strStyle = "outputText1";
 	
+	private TradeInfo inputTradeInfo;
 	/**
 	 * Trading or ordering. (When press button trade, order)
 	 */
@@ -298,6 +300,14 @@ public class QuoteBean implements QuoteBeanDelegate{
 
 	public void setStrStyle(String strStyle) {
 		this.strStyle = strStyle;
+	}
+
+	public TradeInfo getInputTradeInfo() {
+		return inputTradeInfo;
+	}
+
+	public void setInputTradeInfo(TradeInfo inputTradeInfo) {
+		this.inputTradeInfo = inputTradeInfo;
 	}
 
 }
