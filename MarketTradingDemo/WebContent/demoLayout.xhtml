@@ -123,37 +123,14 @@
 							
 							<rich:panel bodyClass="inpanelBody" height='300px'
 								id="inputTradePanel">
-								<h:panelGroup>
-									<h:panelGrid columns="1">
-										<h:panelGrid columns="2">
-											<h:outputLabel value="Set Rate"
-												rendered="#{quoteBean.status == 'ORDER'}" />
-											<rich:inputNumberSpinner value="0" step="1"
-												rendered="#{quoteBean.status == 'ORDER'}" />
-		
-											<h:outputLabel value="Risk Level" />
-											<rich:inputNumberSpinner value="100" step="1" />
-		
-											<h:outputLabel value="Amount" />
-											<rich:inputNumberSpinner value="100" step="1" />
-		
-											<h:outputLabel value="Stop Loss at" />
-											<rich:inputNumberSpinner value="100" step="1" />
-		
-											<h:outputLabel value="Take Profit" />
-											<rich:inputNumberSpinner value="100" step="1" />
-										</h:panelGrid>
-										<h:panelGrid columns="3">
-											<rich:spacer width="50" />
-											<a4j:commandButton value="Buy" />
-											<a4j:commandButton value="Sell" />
-										</h:panelGrid>
-										<h:panelGrid columns="2">
-											<h:selectBooleanCheckbox />
-											<h:outputText value="Carry Trade Over Weekend" />
-										</h:panelGrid>
-									</h:panelGrid>
-								</h:panelGroup>
+								<rich:tabPanel switchType="client" id="tradeTabId">
+									<rich:tab reRender="tradeTabId" label="Trade">
+					            		<!-- Trade Input area -->
+					            		<h:panelGrid columns="2">
+					            			
+					            		</h:panelGrid>
+							        </rich:tab>
+								</rich:tabPanel>
 							</rich:panel>
 						
 						</h:panelGrid>
