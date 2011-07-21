@@ -179,19 +179,21 @@
 										</h:selectOneMenu>
 										
 										<h:outputText value="Lots"/>
-										<rich:inputNumberSpinner value="0"/>
+										<rich:inputNumberSpinner style="margin-left:2px" value="1"/>
 										
 										<h:outputText value="Price"/>
-										<h:inputText value="0"/>
+										<h:inputText size="7" value="1000"/>
 				            		</h:panelGrid>
 				            		
-				            		<h:panelGrid columns="3">
-					            		<h:selectOneRadio>
-											<f:selectItem id="si1" itemLabel="Open" itemValue="Open" />
-											<f:selectItem id="si2" itemLabel="Close" itemValue="Close" />
-										</h:selectOneRadio>
-									</h:panelGrid>
+				            		<h:selectOneRadio style="margin-left:65px">
+										<f:selectItem id="si1" itemLabel="Open" itemValue="Open" />
+										<f:selectItem id="si2" itemLabel="Close" itemValue="Close" />
+									</h:selectOneRadio>
 									
+									<h:panelGroup style="margin-left:75px">
+										 <a4j:commandButton value="Sell"/>
+										 <a4j:commandButton value="Buy"/>
+									</h:panelGroup>
 						        </rich:tab>
 							</rich:tabPanel>
 						
