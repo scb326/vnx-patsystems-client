@@ -20,6 +20,12 @@
 	  	color:blue;
 	  	background-color:#FFFFC4;
 	}
+	.colValue {
+		width:70%;
+	}
+	.colIcon {
+		width:30%;
+	}
 </style></head>
   <body>
 	<f:view>
@@ -59,20 +65,28 @@
                             <h:outputText value="#{quote.title}"></h:outputText>
                         </rich:column>
                         <rich:column style="#{quote.rowStyle}">
-                            <h:outputText value="#{quote.bid}" style="#{quote.bidStyleClass}"></h:outputText>
-                            <h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
+                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon">
+                            	<h:outputText value="#{quote.bid}" style="#{quote.bidStyleClass}"></h:outputText>
+                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
+                            </h:panelGrid>
                         </rich:column>
                         <rich:column style="#{quote.rowStyle}">
-                            <h:outputText value="#{quote.ask}" style="#{quote.askStyleClass}"></h:outputText>
-                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+	                            <h:outputText value="#{quote.ask}" style="#{quote.askStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
+	                        </h:panelGrid>
                         </rich:column>
                         <rich:column style="#{quote.rowStyle}">
-                            <h:outputText value="#{quote.last}" style="#{quote.lastStyleClass}"></h:outputText>
-                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+	                            <h:outputText value="#{quote.last}" style="#{quote.lastStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
+	                        </h:panelGrid>
                         </rich:column>
                         <rich:column style="#{quote.rowStyle}">
-                            <h:outputText value="#{quote.tickVol}" style="#{quote.tickVolStyleClass}"></h:outputText>
-                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+	                            <h:outputText value="#{quote.tickVol}" style="#{quote.tickVolStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
+	                        </h:panelGrid>
                         </rich:column>                
                     </rich:subTable>
                 </rich:dataTable>

@@ -43,6 +43,12 @@
 			width:300px;
 			vertical-align: top;
 		}
+		.colValue {
+			width:70%;
+		}
+		.colIcon {
+			width:30%;
+		}
 		</style>
 	</head>
 <body>
@@ -93,37 +99,37 @@
 												</rich:columnGroup>
 											</f:facet>
 											<rich:subTable
-												onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
-												onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
-												var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
-												<rich:column style="#{quote.rowStyle}">
-													<h:outputText value="#{quote.title}"></h:outputText>
-												</rich:column>
-												<rich:column style="#{quote.rowStyle}">
-													<h:outputText value="#{quote.bid}"
-														style="#{quote.bidStyleClass}"></h:outputText>
-													<h:graphicImage value="/images/#{quote.bidStatus}.png"
-														rendered="#{quote.bidUpdated}" />
-												</rich:column>
-												<rich:column style="#{quote.rowStyle}">
-													<h:outputText value="#{quote.ask}"
-														style="#{quote.askStyleClass}"></h:outputText>
-													<h:graphicImage value="/images/#{quote.askStatus}.png"
-														rendered="#{quote.askUpdated}" />
-												</rich:column>
-												<rich:column style="#{quote.rowStyle}">
-													<h:outputText value="#{quote.last}"
-														style="#{quote.lastStyleClass}"></h:outputText>
-													<h:graphicImage value="/images/#{quote.lastStatus}.png"
-														rendered="#{quote.lastUpdated}" />
-												</rich:column>
-												<rich:column style="#{quote.rowStyle}">
-													<h:outputText value="#{quote.tickVol}"
-														style="#{quote.tickVolStyleClass}"></h:outputText>
-													<h:graphicImage value="/images/#{quote.tickVolStatus}.png"
-														rendered="#{quote.tickVolUpdated}" />
-												</rich:column>
-											</rich:subTable>
+						                        onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+						                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						                        var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
+						                        <rich:column style="#{quote.rowStyle}">
+						                            <h:outputText value="#{quote.title}"></h:outputText>
+						                        </rich:column>
+						                        <rich:column style="#{quote.rowStyle}">
+						                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon">
+						                            	<h:outputText value="#{quote.bid}" style="#{quote.bidStyleClass}"></h:outputText>
+						                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
+						                            </h:panelGrid>
+						                        </rich:column>
+						                        <rich:column style="#{quote.rowStyle}">
+							                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+							                            <h:outputText value="#{quote.ask}" style="#{quote.askStyleClass}"></h:outputText>
+							                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
+							                        </h:panelGrid>
+						                        </rich:column>
+						                        <rich:column style="#{quote.rowStyle}">
+							                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+							                            <h:outputText value="#{quote.last}" style="#{quote.lastStyleClass}"></h:outputText>
+							                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
+							                        </h:panelGrid>
+						                        </rich:column>
+						                        <rich:column style="#{quote.rowStyle}">
+							                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+							                            <h:outputText value="#{quote.tickVol}" style="#{quote.tickVolStyleClass}"></h:outputText>
+							                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
+							                        </h:panelGrid>
+						                        </rich:column>                
+						                    </rich:subTable>
 										</rich:dataTable>
 										<a4j:poll id="poll" interval="500" enabled="true"
 										reRender="tblData" action="#{quoteBean.refreshScreen}" />
