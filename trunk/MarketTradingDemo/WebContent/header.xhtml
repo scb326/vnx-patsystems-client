@@ -5,22 +5,16 @@
       xmlns:a4j="http://richfaces.org/a4j"
       xmlns:rich="http://richfaces.org/rich">
 	<style type="text/css">
-		.center {
-			margin:auto;
-			width:70%;
-		}
-		
-		.right {
-			position:absolute;
-			right:0px;
-			width:300px;
+		.header_bg {
+			background: #5c5c5c url(images/ui-bg_inset-soft_25_000000_1x100.png) repeat left top;
 		}
 	</style>
-	<rich:panel bodyClass="rich-laguna-panel-no-header" style=" height : 110px;width:100%; border-width:2px;padding:0px;margin:0px;">
-		<h:panelGrid columns="2" style="width: 100%;background:#000000;padding:0px;margin:0px;">
+	<link type="text/css" href="css/ui-darkness/jquery-ui-1.8.14.custom.css" rel="stylesheet" />
+	<rich:panel bodyClass="rich-laguna-panel-no-header, " style=" height : 110px;width:100%; border-width:2px;padding:0px;margin:0px;">
+		<h:panelGrid columns="2" styleClass="header_bg" style="width: 100%;padding:0px;margin:0px;" >
 			<h:graphicImage value="/images/logo.gif"/>
 			
-			<rich:panel bodyClass="rich-laguna-panel-no-header" style="border-width : 0px;width: 100%;vertical-align:text-bottom;text-align:right; height : 67px;padding:0px;margin:0px;background:#000000;">
+			<rich:panel bodyClass="rich-laguna-panel-no-header, header_bg" style="border-width : 0px;width: 100%;vertical-align:text-bottom;text-align:right; height : 67px;padding:0px;margin:0px;">
 				<br/>
 				<br/>
 				<h:outputText value="Server time:" style="font-size:13px;font-weight:bold;color:#eeeeee;"/>
@@ -52,7 +46,7 @@
 		</h:panelGrid>
 		
 		<!-- rich:separator height="2" lineType="solid" style="padding:0px;margin:0px;"/><br/-->
-		<rich:panel bodyClass="rich-laguna-panel-no-header" style="height : 35px; width:100%; vertical-align:text-top;border-width:0px;padding:0px;margin:0px;text-align:center;background:#888888;" >
+		<rich:panel bodyClass="rich-laguna-panel-no-header, ui-widget-header" style="height : 35px; width:100%; vertical-align:text-top;border-width:0px;padding:0px;margin:0px;text-align:center;" >
 	  	   	<h:outputText value="Equity:" style="font-size:13px;font-weight:bold;"/>
 	  	   	<rich:spacer width="5" height="5"/>
 	  	   	<h:outputText value="$100,000.00" style="font-size:13px;font-weight:bold;"/>
