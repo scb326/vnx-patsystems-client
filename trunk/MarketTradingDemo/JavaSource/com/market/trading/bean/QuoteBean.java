@@ -5,10 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.component.html.HtmlOutputText;
-
-import org.richfaces.component.html.HtmlDataTable;
-
 import com.market.trading.bean.delegate.QuoteBeanDelegate;
 import com.market.trading.model.Quote;
 import com.market.trading.model.TradeInfo;
@@ -23,12 +19,6 @@ public class QuoteBean implements QuoteBeanDelegate{
 	private static boolean isFeederReady = false;
 	private List<Quote> quotes = null;
 	private List<int[]> updatedQuotes = null;
-	private int lastUpdated = -1;
-	private HtmlDataTable tblQuote;
-	private HtmlOutputText outTxtBid;
-	private HtmlOutputText outTxtAsk;
-	private HtmlOutputText outTxtLast;
-	private HtmlOutputText outTxtTickVol;
 	private String strStyle = "outputText1";
 	
 	private TradeInfo inputTradeInfo;
@@ -36,14 +26,6 @@ public class QuoteBean implements QuoteBeanDelegate{
 	 * Trading or ordering. (When press button trade, order)
 	 */
 	private String status = TRADING;
-
-	public HtmlDataTable getTblQuote() {
-		return tblQuote;
-	}
-
-	public void setTblQuote(HtmlDataTable tblQuote) {
-		this.tblQuote = tblQuote;
-	}
 
 	@PostConstruct
 	public void initData(){
@@ -180,10 +162,7 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (quotes.get(index).isAskUpdated() || quotes.get(index).isBidUpdated()
 				|| quotes.get(index).isLastUpdated() || quotes.get(index).isTickVolUpdated()) {
 				
-				quotes.get(index).setAskStyleClass(quotes.get(index).getAskStyleClass() + ROW_UPDATED_STYLE);
-				quotes.get(index).setBidStyleClass(quotes.get(index).getBidStyleClass() + ROW_UPDATED_STYLE);
-				quotes.get(index).setLastStyleClass(quotes.get(index).getLastStyleClass() + ROW_UPDATED_STYLE);
-				quotes.get(index).setTickVolStyleClass(quotes.get(index).getTickVolStyleClass() + ROW_UPDATED_STYLE);
+				quotes.get(index).setRowStyle(ROW_UPDATED_STYLE);
 				
 				//Add updated row into list updated rows if not existing
 				if (updatedQuotes == null) {
@@ -203,19 +182,7 @@ public class QuoteBean implements QuoteBeanDelegate{
 				if (isExisted == false) {
 					updatedQuotes.add(new int[] {index, 0});
 				}
-//				if (lastUpdated >= 0) {
-//					quotes.get(lastUpdated).setAskUpdated(false);
-//					quotes.get(lastUpdated).setBidUpdated(false);
-//					quotes.get(lastUpdated).setLastUpdated(false);
-//					quotes.get(lastUpdated).setTickVolUpdated(false);
-//					quotes.get(lastUpdated).setAskStyleClass("");
-//					quotes.get(lastUpdated).setBidStyleClass("");
-//					quotes.get(lastUpdated).setLastStyleClass("");
-//					quotes.get(lastUpdated).setTickVolStyleClass("");
-//				}
 			}
-//			
-//			lastUpdated = index;
 		}
 	}
 	
@@ -234,6 +201,7 @@ public class QuoteBean implements QuoteBeanDelegate{
 					quotes.get(this.updatedQuotes.get(i)[0]).setBidStyleClass("");
 					quotes.get(this.updatedQuotes.get(i)[0]).setLastStyleClass("");
 					quotes.get(this.updatedQuotes.get(i)[0]).setTickVolStyleClass("");
+					quotes.get(this.updatedQuotes.get(i)[0]).setRowStyle("");
 					listRemove.add(this.updatedQuotes.get(i));
 				} else {
 					this.updatedQuotes.get(i)[1]++;
@@ -260,38 +228,6 @@ public class QuoteBean implements QuoteBeanDelegate{
 		}else{
 			status = TRADING;
 		}
-	}
-
-	public HtmlOutputText getOutTxtBid() {
-		return outTxtBid;
-	}
-
-	public void setOutTxtBid(HtmlOutputText outTxtBid) {
-		this.outTxtBid = outTxtBid;
-	}
-
-	public HtmlOutputText getOutTxtAsk() {
-		return outTxtAsk;
-	}
-
-	public void setOutTxtAsk(HtmlOutputText outTxtAsk) {
-		this.outTxtAsk = outTxtAsk;
-	}
-
-	public HtmlOutputText getOutTxtLast() {
-		return outTxtLast;
-	}
-
-	public void setOutTxtLast(HtmlOutputText outTxtLast) {
-		this.outTxtLast = outTxtLast;
-	}
-
-	public HtmlOutputText getOutTxtTickVol() {
-		return outTxtTickVol;
-	}
-
-	public void setOutTxtTickVol(HtmlOutputText outTxtTickVol) {
-		this.outTxtTickVol = outTxtTickVol;
 	}
 
 	public String getStrStyle() {

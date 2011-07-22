@@ -71,8 +71,7 @@
 											onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
 											onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
 											cellpadding="0" cellspacing="0" width="480" border="0"
-											var="quoteBean" value="#{quoteBean}" id="tblData"
-											binding="#{quoteBean.tblQuote}">
+											var="quoteBean" value="#{quoteBean}" id="tblData">
 		
 											<f:facet name="header">
 												<rich:columnGroup>
@@ -97,28 +96,28 @@
 												onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
 												onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
 												var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
-												<rich:column>
+												<rich:column style="#{quote.rowStyle}">
 													<h:outputText value="#{quote.title}"></h:outputText>
 												</rich:column>
-												<rich:column>
+												<rich:column style="#{quote.rowStyle}">
 													<h:outputText value="#{quote.bid}"
 														style="#{quote.bidStyleClass}"></h:outputText>
 													<h:graphicImage value="/images/#{quote.bidStatus}.png"
 														rendered="#{quote.bidUpdated}" />
 												</rich:column>
-												<rich:column>
+												<rich:column style="#{quote.rowStyle}">
 													<h:outputText value="#{quote.ask}"
 														style="#{quote.askStyleClass}"></h:outputText>
 													<h:graphicImage value="/images/#{quote.askStatus}.png"
 														rendered="#{quote.askUpdated}" />
 												</rich:column>
-												<rich:column>
+												<rich:column style="#{quote.rowStyle}">
 													<h:outputText value="#{quote.last}"
 														style="#{quote.lastStyleClass}"></h:outputText>
 													<h:graphicImage value="/images/#{quote.lastStatus}.png"
 														rendered="#{quote.lastUpdated}" />
 												</rich:column>
-												<rich:column>
+												<rich:column style="#{quote.rowStyle}">
 													<h:outputText value="#{quote.tickVol}"
 														style="#{quote.tickVolStyleClass}"></h:outputText>
 													<h:graphicImage value="/images/#{quote.tickVolStatus}.png"

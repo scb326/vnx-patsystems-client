@@ -24,6 +24,9 @@ public class Quote {
 	private String tickVolStatus = "";
 	private String tickVolStyleClass = "";
 	
+	//Updated row style
+	private String rowStyle = "";
+	
 	public String getBidStyleClass() {
 		return bidStyleClass;
 	}
@@ -166,5 +169,13 @@ public class Quote {
 
 	public void setTickVolUpdated(boolean tickVolUpdated) {
 		this.tickVolUpdated = tickVolUpdated;
+	}
+
+	public String getRowStyle() {
+		return rowStyle;
+	}
+
+	public void setRowStyle(String rowStyle) {
+		this.rowStyle = rowStyle;
 	}
 }
