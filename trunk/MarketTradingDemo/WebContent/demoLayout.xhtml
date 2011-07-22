@@ -229,8 +229,63 @@
 						<!-- Tab Area -->
 						<rich:tabPanel switchType="client" id="tabId">
 							<rich:tab reRender="tabId" label="Status">
-					            		Open trades tab
-							        </rich:tab>
+					            		<rich:dataTable 
+						                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+						                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						                    cellpadding="0" cellspacing="0"
+						                    width="100%" border="0" var="quoteBean" value="#{quoteBean}" id="tblStatusData" >
+						                
+						                    <f:facet name="header">
+						                        <rich:columnGroup>
+						                            <rich:column>
+						                                <h:outputText value="OrderID"/>
+						                            </rich:column>
+						                            <rich:column>
+						                                <h:outputText value="Status"/>
+						                            </rich:column>
+						                            <rich:column>
+						                                <h:outputText value="Exchange" />
+						                            </rich:column>
+						                            <rich:column>
+						                                <h:outputText value="Commodity" />
+						                            </rich:column>
+						                            <rich:column>
+						                                <h:outputText value="Contract" />
+						                            </rich:column>
+						                            <rich:column>
+						                                <h:outputText value="Operation" />
+						                            </rich:column>
+						                        </rich:columnGroup>
+						                    </f:facet>
+						                    <rich:subTable
+						                        onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+						                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						                        var="status" value="#{quoteBean.statusInfos}" id="tblStatusSubTable">
+						                        <rich:column >
+						                            <h:outputText value="#{status.orderId}"></h:outputText>
+						                        </rich:column>
+						                        <rich:column align="center">
+						                            <h:outputText value="#{status.status}" ></h:outputText>
+						                        </rich:column>
+						                        <rich:column>
+							                        <h:outputText value="#{status.exchange}" ></h:outputText>
+						                        </rich:column>
+						                        <rich:column >
+							                        <h:outputText value="#{status.commodity}" ></h:outputText>
+						                        </rich:column>
+						                        <rich:column align="center">
+							                        <h:outputText value="#{status.contractDate}" ></h:outputText>
+						                        </rich:column>    
+						                         <rich:column align="center">
+						                         	<h:panelGrid columns="2">
+								                        <h:commandLink value="amend" /> 
+								                        <h:commandLink value="cancel" /> 
+							                        </h:panelGrid>
+						                        </rich:column>  
+						                                     
+						                    </rich:subTable>
+						                </rich:dataTable>
+							       	</rich:tab>
 							<rich:tab reRender="tabId" label="Fills">
 							            Orders tab
 							        </rich:tab>

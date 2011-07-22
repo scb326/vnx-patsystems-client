@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import com.market.trading.bean.delegate.QuoteBeanDelegate;
 import com.market.trading.model.Quote;
+import com.market.trading.model.StatusInfo;
 import com.market.trading.model.TradeInfo;
 import com.vnx.patsystems.util.Feeder;
 
@@ -27,6 +28,8 @@ public class QuoteBean implements QuoteBeanDelegate{
 	 */
 	private String status = TRADING;
 
+	private List<StatusInfo> statusInfos = new ArrayList<StatusInfo>(); 
+	
 	@PostConstruct
 	public void initData(){
 		//init status = trading in the first time
@@ -37,8 +40,17 @@ public class QuoteBean implements QuoteBeanDelegate{
 			new Feeder(this);
 		}
 		
+		initStatus();
+		
 	}
 	
+	private void initStatus() {
+		statusInfos = new ArrayList<StatusInfo>();
+		statusInfos.add(new StatusInfo("Giacomo", 34, "VNXSIM", "VRC", "17/7/2011"));
+		statusInfos.add(new StatusInfo("Guido Jack", 4, "VNXSIM", "R COFFEE", "14/7/2011"));
+		statusInfos.add(new StatusInfo("Marco Botto", 31, "SGX", "RUBBER", "11/7/2011"));
+	}
+
 	public List<Quote> getQuotes() {
 		return quotes;
 	}
@@ -244,6 +256,14 @@ public class QuoteBean implements QuoteBeanDelegate{
 
 	public void setInputTradeInfo(TradeInfo inputTradeInfo) {
 		this.inputTradeInfo = inputTradeInfo;
+	}
+
+	public List<StatusInfo> getStatusInfos() {
+		return statusInfos;
+	}
+
+	public void setStatusInfos(List<StatusInfo> statusInfos) {
+		this.statusInfos = statusInfos;
 	}
 
 }
