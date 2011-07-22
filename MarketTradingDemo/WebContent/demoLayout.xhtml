@@ -126,6 +126,8 @@
 												</rich:column>
 											</rich:subTable>
 										</rich:dataTable>
+										<a4j:poll id="poll" interval="500" enabled="true"
+										reRender="tblData" action="#{quoteBean.refreshScreen}" />
 									</rich:panel>
 						        </rich:tab>
 						        <rich:tab label="Grid">
@@ -150,8 +152,6 @@
 							            </f:facet>
 							        </rich:dataGrid>
 						        </rich:tab>
-						        <a4j:poll id="poll" interval="500" enabled="true"
-										reRender="tblData, datagrid" action="#{quoteBean.refreshScreen}" />
 						    </rich:tabPanel>
 							<rich:tabPanel  styleClass="tradePanel" switchType="client" id="tradeTabId">
 								<rich:tab reRender="tradeTabId" label="Trade">
