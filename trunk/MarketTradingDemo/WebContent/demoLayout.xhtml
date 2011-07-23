@@ -133,7 +133,7 @@
 						                    </rich:subTable>
 										</rich:dataTable>
 										<a4j:poll id="poll" interval="500" enabled="true"
-										reRender="tblData" action="#{quoteBean.refreshScreen}" />
+										reRender="tblData, txtServerTime" action="#{quoteBean.refreshScreen}" />
 									</rich:panel>
 						        </rich:tab>
 						        <rich:tab label="Grid">
@@ -220,10 +220,10 @@
 									
 									<h:panelGroup style="margin-left:75px">
 										 <a4j:commandButton id="btnSell" value="Sell" styleClass="ui-state-default ui-corner-all"
-										  onmouseover="this.className='ui-state-hover'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
+										  onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
 										 <rich:spacer width="10" height="5"/>
 										 <a4j:commandButton value="Buy" styleClass="ui-state-default ui-corner-all"
-										 onmouseover="this.className='ui-state-hover'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
+										 onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
 									</h:panelGroup>
 						        </rich:tab>
 							</rich:tabPanel>
