@@ -10,10 +10,10 @@
 		}
 	</style>
 	<link type="text/css" href="css/ui-darkness/jquery-ui-1.8.14.custom.css" rel="stylesheet" />
-		<h:panelGrid columns="2" styleClass="header_bg" style="width: 100%;padding:0px;margin:0px;" >
+		<h:panelGrid id="headerGrid" columns="2" styleClass="header_bg" style="width: 100%;padding:0px;margin:0px;" >
 			<h:graphicImage value="/images/logo.gif"/>
 			
-			<rich:panel id="headerGrid" bodyClass="rich-laguna-panel-no-header, header_bg" style="border-width : 0px;width: 100%;vertical-align:text-bottom;text-align:right; height : 67px;padding:0px;margin:0px;">
+			<rich:panel id="headerPanel" bodyClass="rich-laguna-panel-no-header, header_bg" style="border-width : 0px;width: 100%;vertical-align:text-bottom;text-align:right; height : 67px;padding:0px;margin:0px;">
 				<br/>
 				<br/>
 				<h:outputText value="Server time:" style="font-size:13px;font-weight:bold;color:#eeeeee;"/>
@@ -22,7 +22,7 @@
 		  	   	<rich:spacer width="20" height="5"/>
 		  	   	<h:outputText value="PC time:" style="font-size:13px;font-weight:bold;color:#eeeeee;"/>
 		  	   	<rich:spacer width="5" height="5"/>
-	  	   		<h:outputText value="12:50:00" style="font-size:13px;font-weight:bold;color:#eeeeee;"/>
+	  	   		<h:outputText id="txtClientTime" value="00:00:00" style="font-size:13px;font-weight:bold;color:#eeeeee;"/>
 		      	<rich:spacer width="10" height="5"/>
 		      	<h:selectOneMenu style="font-size:13px;font-weight:bold;">
 		      		<f:selectItem id="si1" itemLabel="English (US)" itemValue="11" />

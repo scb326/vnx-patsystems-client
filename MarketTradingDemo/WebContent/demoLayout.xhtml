@@ -50,11 +50,36 @@
 			width:30%;
 		}
 		</style>
+		<script type="text/javascript">
+			var timer_id;
+			var timer_is_on = 0;
+	
+			function timedCount() {
+				getClientTime();
+				timer_id = setTimeout("timedCount()",1000);
+			}
+	
+			function doTimer() {
+				if (!timer_is_on) {
+					timer_is_on = 1;
+					timedCount();
+				}
+			}
 		
+			function getClientTime() {
+				var d = new Date();
+				
+				var curr_hour = d.getHours();
+				var curr_min = d.getMinutes();
+				var curr_sec = d.getSeconds();
+
+				document.getElementById('mainForm:txtClientTime').innerHTML = curr_hour + ":" + curr_min + ":" + curr_sec;
+			}
+		</script>
 	</head>
-<body>
+<body onload="doTimer()">
 	<f:view>
-		<a4j:form>
+		<a4j:form id="mainForm">
 			<!-- Header -->
 			<ui:include src="/header.xhtml">
 			</ui:include>
@@ -132,7 +157,7 @@
 						                        </rich:column>                
 						                    </rich:subTable>
 										</rich:dataTable>
-										<a4j:poll id="poll" interval="500" enabled="true"
+										<a4j:poll id="poll" interval="1000" enabled="true"
 										reRender="tblData, txtServerTime" action="#{quoteBean.refreshScreen}" />
 									</rich:panel>
 						        </rich:tab>
@@ -222,7 +247,7 @@
 										 <a4j:commandButton id="btnSell" value="Sell" styleClass="ui-state-default ui-corner-all"
 										  onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
 										 <rich:spacer width="10" height="5"/>
-										 <a4j:commandButton value="Buy" styleClass="ui-state-default ui-corner-all"
+										 <a4j:commandButton id="btnBuy" value="Buy" styleClass="ui-state-default ui-corner-all"
 										 onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
 									</h:panelGroup>
 						        </rich:tab>
