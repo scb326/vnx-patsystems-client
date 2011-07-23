@@ -13,6 +13,16 @@
    <value/>
   </managed-property>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>headerBean</managed-bean-name>
+  <managed-bean-class>com.market.trading.model.HeaderBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>serverTime</property-name>
+   <property-class>java.lang.String</property-class>
+   <value/>
+  </managed-property>
+ </managed-bean>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
