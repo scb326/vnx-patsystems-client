@@ -72,7 +72,23 @@
 				var curr_hour = d.getHours();
 				var curr_min = d.getMinutes();
 				var curr_sec = d.getSeconds();
+				
+				curr_hour = curr_hour.toString();
+				curr_min = curr_min.toString();
+				curr_sec = curr_sec.toString();
 
+				if (curr_hour.length &lt; 2) {
+					curr_hour = "0" + curr_hour;
+				}
+
+				if (curr_min.length &lt; 2) {
+					curr_min = "0" + curr_min;
+				}
+				
+				if (curr_sec.length &lt; 2) {
+					curr_sec = "0" + curr_sec;
+				}
+				
 				document.getElementById('mainForm:txtClientTime').innerHTML = curr_hour + ":" + curr_min + ":" + curr_sec;
 			}
 		</script>

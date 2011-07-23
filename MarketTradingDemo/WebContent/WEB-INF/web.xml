@@ -3,20 +3,20 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
  <display-name>MarketTradingDemo</display-name>
  <context-param>
-  <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-  <param-value>.xhtml</param-value>
+  <param-name>facelets.DEVELOPMENT</param-name>
+  <param-value>true</param-value>
  </context-param>
  <context-param>
   <param-name>facelets.REFRESH_PERIOD</param-name>
   <param-value>2</param-value>
  </context-param>
  <context-param>
-  <param-name>facelets.DEVELOPMENT</param-name>
+  <param-name>facelets.SKIP_COMMENTS</param-name>
   <param-value>true</param-value>
  </context-param>
  <context-param>
-  <param-name>facelets.SKIP_COMMENTS</param-name>
-  <param-value>true</param-value>
+  <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+  <param-value>.xhtml</param-value>
  </context-param>
  <context-param>
   <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
@@ -24,7 +24,7 @@
  </context-param>
  <context-param>
   <param-name>org.richfaces.SKIN</param-name>
-  <param-value>blueSky</param-value>
+  <param-value>DEFAULT</param-value>
  </context-param>
  <filter>
   <display-name>Ajax4jsf Filter</display-name>
@@ -50,7 +50,4 @@
  <welcome-file-list>
   <welcome-file>/index.jsp</welcome-file>
  </welcome-file-list>
- <login-config>
-  <auth-method>BASIC</auth-method>
- </login-config>
 </web-app>
