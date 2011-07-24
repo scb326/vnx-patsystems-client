@@ -104,16 +104,16 @@
 			</ui:include>
 			<!-- Header -->
 
-			<rich:panel>
+			<rich:panel styleClass="ui-dialog-content ui-widget-content" style="height:80%">
 				<!-- main area -->
 				<h:panelGrid columns="3" width="100%" columnClasses="adsPanel,mainPanel,adsPanel">
-					<rich:panel style="padding:0" columnClasses="alignTop">
+					<rich:panel style="padding:0; border-width:0px;height:100%;background-color:transparent;" columnClasses="alignTop">
 						<!-- Left Ads area -->
-						<h:outputText value="For Ads" />
+						<h:outputText value="For Ads" style="COLOR: #ffffff;"/>
 						<rich:spacer height='320px' />
 					</rich:panel>
 	
-					<rich:panel style="padding:0">
+					<rich:panel style="padding:0" styleClass="ui-widget-content">
 						<h:panelGrid columns="2" columnClasses="tablePanel,tradePanel"  width="100%">
 							<rich:tabPanel switchType="client" styleClass="body3">
 						        <rich:tab label="Table">
@@ -401,9 +401,9 @@
 						</rich:tabPanel>
 					</rich:panel>
 					
-					<rich:panel style="padding:0" columnClasses="alignTop">
+					<rich:panel style="padding:0; height:100%; border-width:0px; background-color:transparent;" columnClasses="alignTop">
 						<!-- Right Ads area -->
-						<h:outputText value="For Ads" />
+						<h:outputText value="For Ads" style="COLOR: #ffffff;"/>
 						<rich:spacer height='320px' />
 					</rich:panel>
 				</h:panelGrid>
