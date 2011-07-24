@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import com.market.trading.bean.delegate.QuoteBeanDelegate;
+import com.market.trading.model.FillInfo;
 import com.market.trading.model.Quote;
 import com.market.trading.model.StatusInfo;
 import com.market.trading.model.TradeInfo;
@@ -29,6 +30,7 @@ public class QuoteBean implements QuoteBeanDelegate{
 	private String status = TRADING;
 
 	private List<StatusInfo> statusInfos = new ArrayList<StatusInfo>(); 
+	private List<FillInfo> fillInfors = new ArrayList<FillInfo>() ;
 	
 	@PostConstruct
 	public void initData(){
@@ -41,7 +43,7 @@ public class QuoteBean implements QuoteBeanDelegate{
 		}
 		
 		initStatus();
-		
+		initFill() ;
 	}
 	
 	private void initStatus() {
@@ -49,6 +51,12 @@ public class QuoteBean implements QuoteBeanDelegate{
 		statusInfos.add(new StatusInfo("Giacomo", 34, "VNXSIM", "VRC", "17/7/2011"));
 		statusInfos.add(new StatusInfo("Guido Jack", 4, "VNXSIM", "R COFFEE", "14/7/2011"));
 		statusInfos.add(new StatusInfo("Marco Botto", 31, "SGX", "RUBBER", "11/7/2011"));
+	}
+	
+	private void initFill() {
+		fillInfors.add(new FillInfo("AEX        103", "145598", "S 50", 305.00, "09/11/04 10:35:04", "09/11/04 10:36:04")) ;
+		fillInfors.add(new FillInfo("AEX        103", "145599", "B 1",  303.08, "09/11/04 10:37:04", "09/11/04 10:38:04")) ;
+		fillInfors.add(new FillInfo("AEX        103", "145600", "S 1",  306.02, "09/11/04 10:39:04", "09/11/04 10:40:04")) ;
 	}
 
 	public List<Quote> getQuotes() {
@@ -264,6 +272,14 @@ public class QuoteBean implements QuoteBeanDelegate{
 
 	public void setStatusInfos(List<StatusInfo> statusInfos) {
 		this.statusInfos = statusInfos;
+	}
+
+	public List<FillInfo> getFillInfors() {
+		return fillInfors;
+	}
+
+	public void setFillInfors(List<FillInfo> fillInfors) {
+		this.fillInfors = fillInfors;
 	}
 
 }
