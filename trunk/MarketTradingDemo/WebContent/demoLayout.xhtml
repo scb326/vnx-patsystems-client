@@ -404,7 +404,9 @@
 						                        	 onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
 						                        	 var = "fill" value="#{quoteBean.fillInfors}"  id="tblFillSubTable">
 							            			<rich:column>
-							            				<h:outputText value="#{fill.fillId}"/>
+							            				<h:panelGrid column="2">
+							            					<h:outputText value="#{fill.fillId}"/>
+							            				</h:panelGrid>
 							            			</rich:column>
 							            			<rich:column>
 							            				<h:outputText value="#{fill.orderId}"/>
