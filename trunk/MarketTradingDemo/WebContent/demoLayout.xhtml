@@ -4,8 +4,11 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsflot="http://www.jsflot.org/taglib/jsflot"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
 	<head>
+		<jsflot:resources />
 		<title>Demo</title>
 		<style type="text/css">
 		.alignTop {
@@ -332,14 +335,66 @@
 						                </rich:dataTable>
 							       	</rich:tab>
 							<rich:tab reRender="tabId" label="Fills">
-							            Orders tab
+							            
+							            <rich:dataTable onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+							            				onRowMouseOut ="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							            				cellpadding="0" cellspacing="0" border="0" 
+							            				width="100%" var="quoteBean" value="#{quoteBean}" id="tblFillData">
+							            	<f:facet name="header">
+							            		<rich:columnGroup>
+							            			<rich:column >
+							            				<h:outputText value="Fill ID" />
+							            			</rich:column>
+							            			<rich:column >
+							            				<h:outputText value="Order ID" />
+							            			</rich:column>
+							            			<rich:column >
+							            				<h:outputText value="Lots" />
+							            			</rich:column>
+							            			<rich:column >
+							            				<h:outputText value="Price" />
+							            			</rich:column>
+							            			<rich:column >
+							            				<h:outputText value="Filled" />
+							            			</rich:column>
+							            			<rich:column >
+							            				<h:outputText value="Received" />
+							            			</rich:column>
+							            		</rich:columnGroup>
+							            	</f:facet>
+							            	<rich:subTable 
+							            			 onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+						                        	 onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+						                        	 var = "fill" value="#{quoteBean.fillInfors}"  id="tblFillSubTable">
+							            			<rich:column>
+							            				<h:outputText value="#{fill.fillId}"/>
+							            			</rich:column>
+							            			<rich:column>
+							            				<h:outputText value="#{fill.orderId}"/>
+							            			</rich:column>
+							            			<rich:column>
+							            				<h:outputText value="#{fill.lotNum}"/>
+							            			</rich:column>
+							            			<rich:column>
+							            				<h:outputText value="#{fill.price}"/>
+							            			</rich:column>
+							            			<rich:column>
+							            				<h:outputText value="#{fill.filled}"/>
+							            			</rich:column>
+							            			<rich:column>
+							            				<h:outputText value="#{fill.received}"/>
+							            			</rich:column>
+							            	</rich:subTable>
+							            	
+							            </rich:dataTable>
 							        </rich:tab>
 							<rich:tab reRender="tabId" label="History">
 							           	History tab
 							        </rich:tab>
 							<rich:tab reRender="tabId" label="Chart">
-							            Chart tab
-							        </rich:tab>
+							            <!--<ui:include src="/chart.xhtml">
+			</ui:include>
+							        --></rich:tab>
 							<rich:tab reRender="tabId" label="Add Widget +">
 							            Add Widget tab
 							        </rich:tab>
