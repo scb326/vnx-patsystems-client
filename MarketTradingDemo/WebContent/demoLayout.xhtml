@@ -18,7 +18,7 @@
 		}
 		
 		.priceUpdatedTable {
-			height:250px;
+			height:230px;
 		}
 		
 		.alignTop {
@@ -41,13 +41,13 @@
 		
 		.priceUpdatedPanel {
 			width:70%;
-			height: 300px;
+			height: 280px;
 			vertical-align: top;
 		}
 		
 		.tradePanel {
 			width:30%;
-			height:300px;
+			height:280px;
 			vertical-align: top;
 		}
 		.colValue {
@@ -58,6 +58,15 @@
 		}
 		.body_bg {
 			background: #5c5c5c url(images/ui-bg_inset-soft_25_000000_1x100.png) repeat left top;
+		}
+		
+		.rich-tab-header {
+			font-family: Arial;
+			font-size: larger;
+			font-weight: bold;
+			color: black;
+			width: 100px;
+			height: 30px;
 		}
 		</style>
 		<script type="text/javascript">
@@ -111,30 +120,33 @@
 			</ui:include>
 			<!-- Header -->
 
-			<rich:panel styleClass="body_bg" style="height:80%">
+			<rich:panel bodyClass="body-non-pad-margin" styleClass="body_bg" style="height:80%">
 				<!-- main area -->
 				<h:panelGrid columns="3" width="100%" columnClasses="adsPanel,mainPanel,adsPanel">
-					<rich:panel style="padding:0; border-width:0px;height:100%;background-color:transparent;" columnClasses="alignTop">
+					<rich:panel  bodyClass="body-non-pad-margin" style="border-width:0px;height:100%;background-color:transparent;" columnClasses="alignTop">
 						<!-- Left Ads area -->
 						<h:outputText value="For Ads" style="COLOR: #ffffff;"/>
 						<rich:spacer height='320px' />
 					</rich:panel>
 	
-					<rich:panel style="padding:0; border-width:0px; background-color:transparent;">
+					<rich:panel bodyClass="body-non-pad-margin" style="border-width:0px; background-color:transparent;">
 						<h:panelGrid columns="2" columnClasses="priceUpdatedPanel,tradePanel"  width="100%">
-							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0; height:320px; width=60%;">
-								<rich:tabPanel switchType="client" styleClass="priceUpdatedPanel">
-							        <rich:tab label="Table">
+							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0; height:300px;">
+								<rich:tabPanel switchType="client" styleClass="priceUpdatedPanel" width="100%">
+							        <rich:tab label="Table" labelWidth="100px" >
 								        <rich:panel bodyClass="body-non-pad-margin priceUpdatedTable">
 											<rich:dataTable
 												onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
 												onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
-												cellpadding="0" cellspacing="0" width="480" border="0"
+												cellpadding="0" cellspacing="0" width="100%" border="0"
 												var="quoteBean" value="#{quoteBean}" id="tblData">
 			
 												<f:facet name="header">
 													<rich:columnGroup>
-														<rich:column width="40%">
+														<rich:column width="10%">
+															<h:outputText value="Icon" />
+														</rich:column>
+														<rich:column width="25%">
 															<h:outputText value="Title" />
 														</rich:column>
 														<rich:column width="15%">
@@ -149,12 +161,18 @@
 														<rich:column width="15%">
 															<h:outputText value="TickVol" />
 														</rich:column>
+														<rich:column width="10%">
+															<h:outputText value="DOM" />
+														</rich:column>
 													</rich:columnGroup>
 												</f:facet>
 												<rich:subTable
 							                        onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
 							                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
 							                        var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
+							                        <rich:column style="#{quote.rowStyle}">
+							                            <h:outputText value="#{quote.icon}"></h:outputText>
+							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
 							                            <h:outputText value="#{quote.title}"></h:outputText>
 							                        </rich:column>
@@ -181,6 +199,12 @@
 								                            <h:outputText value="#{quote.tickVol}" style="#{quote.tickVolStyleClass}"></h:outputText>
 								                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
 								                        </h:panelGrid>
+							                        </rich:column>
+							                        <rich:column style="#{quote.rowStyle}">
+							                        	<a4j:commandLink style="COLOR: #0000ff;">
+							                        		<h:outputText value="#{quote.dom}"></h:outputText>
+							                        	</a4j:commandLink>
+							                            
 							                        </rich:column>                
 							                    </rich:subTable>
 											</rich:dataTable>
@@ -188,7 +212,7 @@
 											reRender="tblData, txtServerTime" action="#{quoteBean.refreshScreen}" />
 										</rich:panel>
 							        </rich:tab>
-							        <rich:tab label="Grid">
+							        <rich:tab label="Grid"  labelWidth="100px">
 							            <rich:dataGrid value="#{quoteBean.quotes}" var="quote" columns="3" elements="9" width="600px" id="dataGrid">
 								            <rich:panel bodyClass="pbody">
 								                <f:facet name="header">
@@ -213,11 +237,11 @@
 							    </rich:tabPanel>
 							</rich:panel>
 							
-							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0; height:320px; width=40%;">
-								<rich:tabPanel  styleClass="tradePanel" switchType="client" id="tradeTabId">
+							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0; height:300px;" width="100%">
+								<rich:tabPanel  styleClass="tradePanel" switchType="client" id="tradeTabId" width="100%">
 									<rich:tab reRender="tradeTabId" label="Trade">
 					            		<!-- Trade Input area -->
-					            		<h:panelGrid columns="2">
+					            		<h:panelGrid columns="2" width="100%">
 					            			<h:outputText value="Exchange"/>
 					            			<h:selectOneMenu>
 												<f:selectItem itemLabel="SGX" itemValue="SGX"/>
@@ -273,7 +297,7 @@
 											<f:selectItem id="sir2" itemLabel="Close" itemValue="Close" />
 										</h:selectOneRadio>
 										
-										<h:panelGroup style="margin-left:75px">
+										<h:panelGroup style="margin-left:75px" width="100%">
 											 <a4j:commandButton id="btnSell" value="Sell" styleClass="ui-state-default ui-corner-all"
 											  onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
 											 <rich:spacer width="10" height="5"/>
@@ -412,7 +436,7 @@
 						</rich:tabPanel>
 					</rich:panel>
 					
-					<rich:panel style="padding:0; height:100%; border-width:0px; background-color:transparent;" columnClasses="alignTop">
+					<rich:panel bodyClass="body-non-pad-margin" style="height:100%; border-width:0px; background-color:transparent;" columnClasses="alignTop">
 						<!-- Right Ads area -->
 						<h:outputText value="For Ads" style="COLOR: #ffffff;"/>
 						<rich:spacer height='320px' />

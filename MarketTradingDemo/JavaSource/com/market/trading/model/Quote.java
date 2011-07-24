@@ -2,11 +2,13 @@ package com.market.trading.model;
 
 public class Quote {
 	
+	private String icon = "Icon";
 	private String title;
 	private String bid;
 	private String ask;
 	private String last;
 	private String tickVol;
+	private String dom = "view";
 	
 	private boolean bidUpdated = false;
 	private String bidStatus = "";
@@ -177,5 +179,21 @@ public class Quote {
 
 	public void setRowStyle(String rowStyle) {
 		this.rowStyle = rowStyle;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public String getDom() {
+		return dom;
+	}
+
+	public void setDom(String dom) {
+		this.dom = dom;
 	}
 }
