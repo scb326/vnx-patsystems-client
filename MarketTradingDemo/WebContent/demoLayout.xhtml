@@ -57,7 +57,9 @@
 			width:30%;
 		}
 		.body_bg {
-			background: #5c5c5c url(images/ui-bg_inset-soft_25_000000_1x100.png) repeat left top;
+			background-image:url(images/ui-bg_diagonals-thick_8_333333_40x40.png);
+			background-repeat:repeat-y-x;
+			background-color: #5C5C5C;
 		}
 		
 		.rich-tab-header {
@@ -120,7 +122,7 @@
 			</ui:include>
 			<!-- Header -->
 
-			<rich:panel bodyClass="body-non-pad-margin" styleClass="body_bg" style="height:80%">
+			<rich:panel bodyClass="body-non-pad-margin" styleClass="body_bg">
 				<!-- main area -->
 				<h:panelGrid columns="3" width="100%" columnClasses="adsPanel,mainPanel,adsPanel">
 					<rich:panel  bodyClass="body-non-pad-margin" style="border-width:0px;height:100%;background-color:transparent;" columnClasses="alignTop">
@@ -310,7 +312,7 @@
 						</h:panelGrid>
 						
 						<!-- Tab Area -->
-						<rich:tabPanel switchType="client" id="tabId">
+						<rich:tabPanel switchType="client" id="tabId" height="200px">
 							<rich:tab reRender="tabId" label="Status">
 					            		<rich:dataTable 
 						                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
