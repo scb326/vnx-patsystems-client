@@ -4,16 +4,11 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:a4j="http://richfaces.org/a4j"
       xmlns:rich="http://richfaces.org/rich">
-	<style type="text/css">
-		.header_bg {
-			background: #5c5c5c url(images/ui-bg_inset-soft_25_000000_1x100.png) repeat left top;
-		}
-	</style>
 	<link type="text/css" href="css/ui-darkness/jquery-ui-1.8.14.custom.css" rel="stylesheet" />
-		<h:panelGrid id="headerGrid" columns="2" styleClass="header_bg" style="width: 100%;padding:0px;margin:0px;" >
+		<h:panelGrid id="headerGrid" columns="2" styleClass="ui-dialog-content ui-widget-content" style="width: 100%;padding:0px;margin:0px;" >
 			<h:graphicImage value="/images/logo.gif"/>
 			
-			<rich:panel id="headerPanel" bodyClass="rich-laguna-panel-no-header, header_bg" style="border-width : 0px;width: 100%;vertical-align:text-bottom;text-align:right; height : 67px;padding:0px;margin:0px;">
+			<rich:panel id="headerPanel" bodyClass="rich-laguna-panel-no-header" style="border-width : 0px;width: 100%;vertical-align:text-bottom;text-align:right; height : 67px;padding:0px;margin:0px;background-color:transparent;">
 				<br/>
 				<br/>
 				<h:outputText value="Server time:" style="font-size:13px;font-weight:bold;color:#eeeeee;"/>

@@ -11,16 +11,18 @@
 		<jsflot:resources />
 		<title>Demo</title>
 		<style type="text/css">
-		.alignTop {
-			vertical-align: top;
-		}
-
-		.body3 {
-			height: 200px;
-			width: 500px;
+		.body-non-pad-margin {
 			padding: 0px;
 			margin: 0px;
 			overflow: auto;
+		}
+		
+		.priceUpdatedTable {
+			height:250px;
+		}
+		
+		.alignTop {
+			vertical-align: top;
 		}
 		
 		.updated_cell {
@@ -37,13 +39,15 @@
 			vertical-align: top;
 		}
 		
-		.tablePanel {
+		.priceUpdatedPanel {
 			width:70%;
+			height: 300px;
 			vertical-align: top;
 		}
 		
 		.tradePanel {
-			width:300px;
+			width:30%;
+			height:300px;
 			vertical-align: top;
 		}
 		.colValue {
@@ -51,6 +55,9 @@
 		}
 		.colIcon {
 			width:30%;
+		}
+		.body_bg {
+			background: #5c5c5c url(images/ui-bg_inset-soft_25_000000_1x100.png) repeat left top;
 		}
 		</style>
 		<script type="text/javascript">
@@ -104,7 +111,7 @@
 			</ui:include>
 			<!-- Header -->
 
-			<rich:panel styleClass="ui-dialog-content ui-widget-content" style="height:80%">
+			<rich:panel styleClass="body_bg" style="height:80%">
 				<!-- main area -->
 				<h:panelGrid columns="3" width="100%" columnClasses="adsPanel,mainPanel,adsPanel">
 					<rich:panel style="padding:0; border-width:0px;height:100%;background-color:transparent;" columnClasses="alignTop">
@@ -113,165 +120,169 @@
 						<rich:spacer height='320px' />
 					</rich:panel>
 	
-					<rich:panel style="padding:0" styleClass="ui-widget-content">
-						<h:panelGrid columns="2" columnClasses="tablePanel,tradePanel"  width="100%">
-							<rich:tabPanel switchType="client" styleClass="body3">
-						        <rich:tab label="Table">
-							        <rich:panel bodyClass="body3">
-										<rich:dataTable
-											onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
-											onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
-											cellpadding="0" cellspacing="0" width="480" border="0"
-											var="quoteBean" value="#{quoteBean}" id="tblData">
-		
-											<f:facet name="header">
-												<rich:columnGroup>
-													<rich:column width="40%">
-														<h:outputText value="Title" />
-													</rich:column>
-													<rich:column width="15%">
-														<h:outputText value="Bid" />
-													</rich:column>
-													<rich:column width="15%">
-														<h:outputText value="Ask" />
-													</rich:column>
-													<rich:column width="15%">
-														<h:outputText value="Last" />
-													</rich:column>
-													<rich:column width="15%">
-														<h:outputText value="TickVol" />
-													</rich:column>
-												</rich:columnGroup>
-											</f:facet>
-											<rich:subTable
-						                        onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
-						                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
-						                        var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
-						                        <rich:column style="#{quote.rowStyle}">
-						                            <h:outputText value="#{quote.title}"></h:outputText>
-						                        </rich:column>
-						                        <rich:column style="#{quote.rowStyle}">
-						                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon">
-						                            	<h:outputText value="#{quote.bid}" style="#{quote.bidStyleClass}"></h:outputText>
-						                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
-						                            </h:panelGrid>
-						                        </rich:column>
-						                        <rich:column style="#{quote.rowStyle}">
-							                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-							                            <h:outputText value="#{quote.ask}" style="#{quote.askStyleClass}"></h:outputText>
-							                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
-							                        </h:panelGrid>
-						                        </rich:column>
-						                        <rich:column style="#{quote.rowStyle}">
-							                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-							                            <h:outputText value="#{quote.last}" style="#{quote.lastStyleClass}"></h:outputText>
-							                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
-							                        </h:panelGrid>
-						                        </rich:column>
-						                        <rich:column style="#{quote.rowStyle}">
-							                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-							                            <h:outputText value="#{quote.tickVol}" style="#{quote.tickVolStyleClass}"></h:outputText>
-							                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
-							                        </h:panelGrid>
-						                        </rich:column>                
-						                    </rich:subTable>
-										</rich:dataTable>
-										<a4j:poll id="poll" interval="1000" enabled="true"
-										reRender="tblData, txtServerTime" action="#{quoteBean.refreshScreen}" />
-									</rich:panel>
-						        </rich:tab>
-						        <rich:tab label="Grid">
-						            <rich:dataGrid value="#{quoteBean.quotes}" var="quote" columns="3" elements="9" width="600px" id="dataGrid">
-							            <rich:panel bodyClass="pbody">
-							                <f:facet name="header">
-							                    <h:outputText value="#{quote.title}"></h:outputText>
-							                </f:facet>
-							                <h:panelGrid columns="2">
-							                    <h:outputText value="Price:" styleClass="label"></h:outputText>
-							                    <h:outputText value="#{quote.bid}" />
-							                    <h:outputText value="Mileage:" styleClass="label"></h:outputText>
-							                    <h:outputText value="#{quote.ask}" />
-							                    <h:outputText value="VIN:" styleClass="label"></h:outputText>
-							                    <h:outputText value="#{quote.last}" />
-							                    <h:outputText value="Stock:" styleClass="label"></h:outputText>
-							                    <h:outputText value="#{quote.tickVol}" />
-							                </h:panelGrid>
-							            </rich:panel>
-							            <f:facet name="footer">
-							                <rich:datascroller></rich:datascroller>
-							            </f:facet>
-							        </rich:dataGrid>
-						        </rich:tab>
-						    </rich:tabPanel>
-							<rich:tabPanel  styleClass="tradePanel" switchType="client" id="tradeTabId">
-								<rich:tab reRender="tradeTabId" label="Trade">
-				            		<!-- Trade Input area -->
-				            		<h:panelGrid columns="2">
-				            			<h:outputText value="Exchange"/>
-				            			<h:selectOneMenu>
-											<f:selectItem itemLabel="SGX" itemValue="SGX"/>
-											<f:selectItem itemLabel="VNXSIM" itemValue="VNXSIM"/>
-										</h:selectOneMenu>
-				            		
-				            			<h:outputText value="Commodity"/>
-				            			<h:selectOneMenu>
-											<f:selectItem itemLabel="QCR" itemValue="QCR"/>
-											<f:selectItem itemLabel="R COFFEE" itemValue="R COFFEE"/>
-											<f:selectItem itemLabel="RUBBER" itemValue="RUBBER"/>
-											<f:selectItem itemLabel="SGXTSG20" itemValue="SGXTSG20"/>
-											<f:selectItem itemLabel="VCR" itemValue="VCR"/>
-											<f:selectItem itemLabel="VRSS3" itemValue="VRSS3"/>
-										</h:selectOneMenu>
-				            		
-				            			<h:outputText value="Contract Date"/>
-				            			<h:selectOneMenu>
-											<f:selectItem itemLabel="JAN" itemValue="JAN"/>
-											<f:selectItem itemLabel="FEB" itemValue="FEB"/>
-											<f:selectItem itemLabel="MAR" itemValue="MAR"/>
-											<f:selectItem itemLabel="APR" itemValue="APR"/>
-											<f:selectItem itemLabel="MAY" itemValue="MAY"/>
-											<f:selectItem itemLabel="JUN" itemValue="JUN"/>
-											<f:selectItem itemLabel="JUL" itemValue="JUL"/>
-											<f:selectItem itemLabel="AUG" itemValue="AUG"/>
-											<f:selectItem itemLabel="SEP" itemValue="SEP"/>
-											<f:selectItem itemLabel="OCT" itemValue="OCT"/>
-											<f:selectItem itemLabel="NOV" itemValue="NOV"/>
-											<f:selectItem itemLabel="DEC" itemValue="DEC"/>
-										</h:selectOneMenu>
-				            		
-				            			<h:outputText value="Order Type"/>
-				            			<h:selectOneMenu>
-											<f:selectItem itemLabel="Limit" itemValue="Limit"/>
-											<f:selectItem itemLabel="Limit FAK" itemValue="Limit FAK"/>
-											<f:selectItem itemLabel="Limit FOK" itemValue="Limit FOK"/>
-											<f:selectItem itemLabel="Market" itemValue="Market"/>
-											<f:selectItem itemLabel="Market FOK" itemValue="Market FOK"/>
-											<f:selectItem itemLabel="Mkt Limit" itemValue="Mkt Limit"/>
-											<f:selectItem itemLabel="RFQ" itemValue="RFQ"/>
-										</h:selectOneMenu>
+					<rich:panel style="padding:0; border-width:0px; background-color:transparent;">
+						<h:panelGrid columns="2" columnClasses="priceUpdatedPanel,tradePanel"  width="100%">
+							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0; height:320px; width=60%;">
+								<rich:tabPanel switchType="client" styleClass="priceUpdatedPanel">
+							        <rich:tab label="Table">
+								        <rich:panel bodyClass="body-non-pad-margin priceUpdatedTable">
+											<rich:dataTable
+												onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+												onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+												cellpadding="0" cellspacing="0" width="480" border="0"
+												var="quoteBean" value="#{quoteBean}" id="tblData">
+			
+												<f:facet name="header">
+													<rich:columnGroup>
+														<rich:column width="40%">
+															<h:outputText value="Title" />
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText value="Bid" />
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText value="Ask" />
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText value="Last" />
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText value="TickVol" />
+														</rich:column>
+													</rich:columnGroup>
+												</f:facet>
+												<rich:subTable
+							                        onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+							                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							                        var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
+							                        <rich:column style="#{quote.rowStyle}">
+							                            <h:outputText value="#{quote.title}"></h:outputText>
+							                        </rich:column>
+							                        <rich:column style="#{quote.rowStyle}">
+							                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon">
+							                            	<h:outputText value="#{quote.bid}" style="#{quote.bidStyleClass}"></h:outputText>
+							                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
+							                            </h:panelGrid>
+							                        </rich:column>
+							                        <rich:column style="#{quote.rowStyle}">
+								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+								                            <h:outputText value="#{quote.ask}" style="#{quote.askStyleClass}"></h:outputText>
+								                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
+								                        </h:panelGrid>
+							                        </rich:column>
+							                        <rich:column style="#{quote.rowStyle}">
+								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+								                            <h:outputText value="#{quote.last}" style="#{quote.lastStyleClass}"></h:outputText>
+								                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
+								                        </h:panelGrid>
+							                        </rich:column>
+							                        <rich:column style="#{quote.rowStyle}">
+								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
+								                            <h:outputText value="#{quote.tickVol}" style="#{quote.tickVolStyleClass}"></h:outputText>
+								                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
+								                        </h:panelGrid>
+							                        </rich:column>                
+							                    </rich:subTable>
+											</rich:dataTable>
+											<a4j:poll id="poll" interval="1000" enabled="true"
+											reRender="tblData, txtServerTime" action="#{quoteBean.refreshScreen}" />
+										</rich:panel>
+							        </rich:tab>
+							        <rich:tab label="Grid">
+							            <rich:dataGrid value="#{quoteBean.quotes}" var="quote" columns="3" elements="9" width="600px" id="dataGrid">
+								            <rich:panel bodyClass="pbody">
+								                <f:facet name="header">
+								                    <h:outputText value="#{quote.title}"></h:outputText>
+								                </f:facet>
+								                <h:panelGrid columns="2">
+								                    <h:outputText value="Price:" styleClass="label"></h:outputText>
+								                    <h:outputText value="#{quote.bid}" />
+								                    <h:outputText value="Mileage:" styleClass="label"></h:outputText>
+								                    <h:outputText value="#{quote.ask}" />
+								                    <h:outputText value="VIN:" styleClass="label"></h:outputText>
+								                    <h:outputText value="#{quote.last}" />
+								                    <h:outputText value="Stock:" styleClass="label"></h:outputText>
+								                    <h:outputText value="#{quote.tickVol}" />
+								                </h:panelGrid>
+								            </rich:panel>
+								            <f:facet name="footer">
+								                <rich:datascroller></rich:datascroller>
+								            </f:facet>
+								        </rich:dataGrid>
+							        </rich:tab>
+							    </rich:tabPanel>
+							</rich:panel>
+							
+							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0; height:320px; width=40%;">
+								<rich:tabPanel  styleClass="tradePanel" switchType="client" id="tradeTabId">
+									<rich:tab reRender="tradeTabId" label="Trade">
+					            		<!-- Trade Input area -->
+					            		<h:panelGrid columns="2">
+					            			<h:outputText value="Exchange"/>
+					            			<h:selectOneMenu>
+												<f:selectItem itemLabel="SGX" itemValue="SGX"/>
+												<f:selectItem itemLabel="VNXSIM" itemValue="VNXSIM"/>
+											</h:selectOneMenu>
+					            		
+					            			<h:outputText value="Commodity"/>
+					            			<h:selectOneMenu>
+												<f:selectItem itemLabel="QCR" itemValue="QCR"/>
+												<f:selectItem itemLabel="R COFFEE" itemValue="R COFFEE"/>
+												<f:selectItem itemLabel="RUBBER" itemValue="RUBBER"/>
+												<f:selectItem itemLabel="SGXTSG20" itemValue="SGXTSG20"/>
+												<f:selectItem itemLabel="VCR" itemValue="VCR"/>
+												<f:selectItem itemLabel="VRSS3" itemValue="VRSS3"/>
+											</h:selectOneMenu>
+					            		
+					            			<h:outputText value="Contract Date"/>
+					            			<h:selectOneMenu>
+												<f:selectItem itemLabel="JAN" itemValue="JAN"/>
+												<f:selectItem itemLabel="FEB" itemValue="FEB"/>
+												<f:selectItem itemLabel="MAR" itemValue="MAR"/>
+												<f:selectItem itemLabel="APR" itemValue="APR"/>
+												<f:selectItem itemLabel="MAY" itemValue="MAY"/>
+												<f:selectItem itemLabel="JUN" itemValue="JUN"/>
+												<f:selectItem itemLabel="JUL" itemValue="JUL"/>
+												<f:selectItem itemLabel="AUG" itemValue="AUG"/>
+												<f:selectItem itemLabel="SEP" itemValue="SEP"/>
+												<f:selectItem itemLabel="OCT" itemValue="OCT"/>
+												<f:selectItem itemLabel="NOV" itemValue="NOV"/>
+												<f:selectItem itemLabel="DEC" itemValue="DEC"/>
+											</h:selectOneMenu>
+					            		
+					            			<h:outputText value="Order Type"/>
+					            			<h:selectOneMenu>
+												<f:selectItem itemLabel="Limit" itemValue="Limit"/>
+												<f:selectItem itemLabel="Limit FAK" itemValue="Limit FAK"/>
+												<f:selectItem itemLabel="Limit FOK" itemValue="Limit FOK"/>
+												<f:selectItem itemLabel="Market" itemValue="Market"/>
+												<f:selectItem itemLabel="Market FOK" itemValue="Market FOK"/>
+												<f:selectItem itemLabel="Mkt Limit" itemValue="Mkt Limit"/>
+												<f:selectItem itemLabel="RFQ" itemValue="RFQ"/>
+											</h:selectOneMenu>
+											
+											<h:outputText value="Lots"/>
+											<rich:inputNumberSpinner style="margin-left:2px" value="1"/>
+											
+											<h:outputText value="Price"/>
+											<h:inputText size="7" value="1000"/>
+					            		</h:panelGrid>
+					            		
+					            		<h:selectOneRadio style="margin-left:65px">
+											<f:selectItem id="sir1" itemLabel="Open" itemValue="Open" />
+											<f:selectItem id="sir2" itemLabel="Close" itemValue="Close" />
+										</h:selectOneRadio>
 										
-										<h:outputText value="Lots"/>
-										<rich:inputNumberSpinner style="margin-left:2px" value="1"/>
-										
-										<h:outputText value="Price"/>
-										<h:inputText size="7" value="1000"/>
-				            		</h:panelGrid>
-				            		
-				            		<h:selectOneRadio style="margin-left:65px">
-										<f:selectItem id="sir1" itemLabel="Open" itemValue="Open" />
-										<f:selectItem id="sir2" itemLabel="Close" itemValue="Close" />
-									</h:selectOneRadio>
-									
-									<h:panelGroup style="margin-left:75px">
-										 <a4j:commandButton id="btnSell" value="Sell" styleClass="ui-state-default ui-corner-all"
-										  onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
-										 <rich:spacer width="10" height="5"/>
-										 <a4j:commandButton id="btnBuy" value="Buy" styleClass="ui-state-default ui-corner-all"
-										 onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
-									</h:panelGroup>
-						        </rich:tab>
-							</rich:tabPanel>
-						
+										<h:panelGroup style="margin-left:75px">
+											 <a4j:commandButton id="btnSell" value="Sell" styleClass="ui-state-default ui-corner-all"
+											  onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
+											 <rich:spacer width="10" height="5"/>
+											 <a4j:commandButton id="btnBuy" value="Buy" styleClass="ui-state-default ui-corner-all"
+											 onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
+										</h:panelGroup>
+							        </rich:tab>
+								</rich:tabPanel>
+							</rich:panel>
 						</h:panelGrid>
 						
 						<!-- Tab Area -->
@@ -407,7 +418,9 @@
 						<rich:spacer height='320px' />
 					</rich:panel>
 				</h:panelGrid>
+				
 			</rich:panel>
+			<!-- div class="ui-widget-shadow ui-corner-all" style="width: 525px; height: 250px; position: absolute; left: 165px; top: 155px;"></div-->
 		</a4j:form>
 	</f:view>
 </body>
