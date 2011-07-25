@@ -25,7 +25,7 @@
  </managed-bean>
  <managed-bean>
   <managed-bean-name>chartMbean</managed-bean-name>
-  <managed-bean-class>com.market.trading.model.ChartMBean</managed-bean-class>
+  <managed-bean-class>com.market.trading.bean.ChartMBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <application>
