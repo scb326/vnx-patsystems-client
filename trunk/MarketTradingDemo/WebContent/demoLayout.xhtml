@@ -125,14 +125,12 @@
 				<!-- main area -->
 				<h:panelGrid columns="3" width="100%" columnClasses="adsPanel,mainPanel,adsPanel">
 					<rich:panel  bodyClass="body-non-pad-margin" style="border-width:0px;height:100%;background-color:transparent;" columnClasses="alignTop">
-						<!-- Left Ads area -->
-						<h:outputText value="For Ads" style="FONT-FAMILY: 'Tahoma'; COLOR: #ffffff;"/>
-						<rich:spacer height='320px' />
+						
 					</rich:panel>
 	
 					<rich:panel bodyClass="body-non-pad-margin" style="border-width:0px; background-color:transparent;">
 						<h:panelGrid columns="2" columnClasses="priceUpdatedPanel,tradePanel"  width="100%">
-							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0; height:310px;">
+							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0">
 								<rich:tabPanel switchType="client" styleClass="priceUpdatedPanel" width="100%">
 							        <rich:tab label="Table" labelWidth="100px" >
 								        <rich:panel bodyClass="body-non-pad-margin priceUpdatedTable">
@@ -238,7 +236,7 @@
 							    </rich:tabPanel>
 							</rich:panel>
 							
-							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0; height:310px;" width="100%">
+							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0;" width="100%">
 								<rich:tabPanel  styleClass="tradePanel" switchType="client" id="tradeTabId" width="100%">
 									<rich:tab reRender="tradeTabId" label="Trade">
 					            		<!-- Trade Input area -->
@@ -440,9 +438,7 @@
 					</rich:panel>
 					
 					<rich:panel bodyClass="body-non-pad-margin" style="height:100%; border-width:0px; background-color:transparent;" columnClasses="alignTop">
-						<!-- Right Ads area -->
-						<h:outputText value="For Ads" style="COLOR: #ffffff;FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
-						<rich:spacer height='320px' />
+						
 					</rich:panel>
 				</h:panelGrid>
 				
