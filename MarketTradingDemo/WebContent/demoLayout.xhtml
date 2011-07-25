@@ -124,6 +124,7 @@
 				document.getElementById('mainForm:txtClientTime').innerHTML = curr_hour + ":" + curr_min + ":" + curr_sec;
 			}
 		</script>
+		
 	</head>
 <body onload="doTimer()">
 	<f:view>
@@ -358,7 +359,7 @@
 						</h:panelGrid>
 						
 						<!-- Tab Area -->
-						<rich:tabPanel switchType="client" id="tabId" height="200px">
+						<rich:tabPanel switchType="client" reRender="tabId" id="tabId" height="200px">
 							<rich:tab reRender="tabId" label="Status">
 					            		<rich:dataTable 
 						                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
@@ -476,10 +477,70 @@
 							<rich:tab reRender="tabId" label="History">
 							           	History tab
 							        </rich:tab>
-							<rich:tab reRender="tabId" label="Chart">
-							            <!--<ui:include src="/chart.xhtml">
-			</ui:include>
-							        --></rich:tab>
+							<rich:tab id="chartID" switchType="server" reRender="chartID,clickedPanel" label="Chart">
+											<rich:panel id="clickedPanel">
+												<jsflot:flotChart id="manualCandlestickChart"
+											        actionListener="#{chartMbean.chartActionListener}"
+											        chartDraggable="#{chartMbean.chartData.chartDraggable}"
+											        chartClickable="#{chartMbean.chartData.chartClickable}"
+											        chartZoomable="#{chartMbean.chartData.chartZoomable}"
+											        reRender="clickedPanel" 
+											        showLines="false"
+											        fillLines="false"
+											        showDataPoints="#{chartMbean.chartData.showDataPoints}"
+											        legendColumns="#{chartMbean.chartData.legendColumns}"
+											        legendOpacity="#{chartMbean.chartData.legendOpacity}"
+											        legendPosition="#{chartMbean.chartData.legendPosition}"
+											        legendColor="#{chartMbean.chartData.legendColor}"
+											        height="#{chartMbean.chartData.height}"
+											        width="#{chartMbean.chartData.width}"
+											        showTooltip="#{chartMbean.chartData.showTooltip}"
+											        tooltipPosition="#{chartMbean.chartData.tooltipPosition}"
+											        tooltipFollowMouse="#{chartMbean.chartData.tooltipFollowMouse}"
+											        mode="#{chartMbean.chartData.mode}"
+											        timeFormat="#{chartMbean.chartData.timeFormat}"
+											        title="#{chartMbean.chartData.title}"
+											        subtitle="#{chartMbean.chartData.subtitle}" 
+											        chartType="candles"
+											        showXaxisLabels="#{chartMbean.chartData.showXaxisLabels}"
+											        xaxisTitle="#{chartMbean.chartData.xaxisTitle}"
+											        xaxisTitleRotation="#{chartMbean.chartData.xaxisTitleRotation}"
+											        xaxisLabelRotation="#{chartMbean.chartData.xaxisLabelRotation}"
+											        showYaxisLabels="#{chartMbean.chartData.showYaxisLabels}"
+											        yaxisTitle="#{chartMbean.chartData.yaxisTitle}"
+											        yaxisTitleRotation="#{chartMbean.chartData.yaxisTitleRotation}"
+											        yaxisLabelRotation="#{chartMbean.chartData.yaxisLabelRotation}"
+											        numberOfXAxisTicks="#{chartMbean.chartData.numberOfXAxisTicks}"
+											        xaxisMinValue="#{chartMbean.chartData.xaxisMinValue}"
+											        xaxisMaxValue="#{chartMbean.chartData.xaxisMaxValue}"
+											        numberOfYAxisTicks="#{chartMbean.chartData.numberOfYAxisTicks}"
+											        yaxisMinValue="0"
+											        markers="#{chartMbean.chartData.markers}"
+											        markerPosition="#{chartMbean.chartData.markerPosition}"
+											        yaxisMaxValue="20"
+											        crosshair="#{chartMbean.chartData.crosshair}">
+											
+											        <jsflot:XYDataList color="#4ae815" fillLines="false" label="Label 1!"
+											            markerPosition="ct" markers="true" showDataPoints="true"
+											            showLines="false">
+											            <jsflot:CandlestickDataPoint x="1" pointLabel="p1l1" min="2" max="6" open="1" close="10"/>
+											            <jsflot:CandlestickDataPoint x="2" pointLabel="p1l2" min="4" max="8" open="10" close="3"/>
+											            <jsflot:CandlestickDataPoint x="3" pointLabel="p1l3" min="6" max="10" open="3" close="10"/>
+											            <jsflot:CandlestickDataPoint x="4" pointLabel="p1l4" min="8" max="12" open="1" close="10"/>
+											            <jsflot:CandlestickDataPoint x="5" pointLabel="p1l5" min="10" max="14" open="7" close="15"/>
+											            <jsflot:CandlestickDataPoint x="6" pointLabel="p1l6" min="12" max="16" open="10" close="17"/>
+											            
+											            <jsflot:CandlestickDataPoint x="7" pointLabel="p1l7" min="13" max="17" open="11" close="10"/>
+											            <jsflot:CandlestickDataPoint x="8" pointLabel="p1l8" min="14" max="18" open="15" close="17"/>
+											            <jsflot:CandlestickDataPoint x="9" pointLabel="p1l9" min="16" max="20" open="14" close="10"/>
+											            <jsflot:CandlestickDataPoint x="10" pointLabel="p1l10" min="18" max="22" open="25" close="10"/>
+											            <jsflot:CandlestickDataPoint x="11" pointLabel="p1l11" min="19" max="23" open="18" close="15"/>
+											            <jsflot:CandlestickDataPoint x="12" pointLabel="p1l12" min="20" max="15" open="8" close="17"/>
+											        </jsflot:XYDataList>
+											
+											    </jsflot:flotChart>
+											</rich:panel>
+							           </rich:tab>
 							<rich:tab reRender="tabId" label="Add Widget +">
 							            Add Widget tab
 							        </rich:tab>
@@ -492,6 +553,8 @@
 				</h:panelGrid>
 				
 			</rich:panel>
+				
+			
 		</a4j:form>
 	</f:view>
 </body>
