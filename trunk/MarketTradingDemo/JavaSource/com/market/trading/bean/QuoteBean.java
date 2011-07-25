@@ -269,7 +269,7 @@ public class QuoteBean implements QuoteBeanDelegate{
 			ArrayList<int[]> listRemove = new ArrayList<int[]>();
 			
 			for (int i = 0; i < this.updatedQuotes.size(); i++) {
-				if (this.updatedQuotes.get(i)[1] >= 6) {
+				if (this.updatedQuotes.get(i)[1] >= 2) {
 					quotes.get(this.updatedQuotes.get(i)[0]).setBidUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setBidVolUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setOfferUpdated(false);

@@ -2,7 +2,7 @@ package com.market.trading.model;
 
 public class Quote {
 	
-	private String icon = "Icon";
+	private String icon = "icon";
 	private String contract;
 	private String bid;
 	private String bidVol;
