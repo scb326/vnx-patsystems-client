@@ -15,8 +15,9 @@ public class Feeder {
 	
 	private ArrayList<SubscribedItem> contractMap;
 	private ConcurrentHashMap<String, Integer> indexMap;
-	private String[] exchanges, commodites,contracts, bids, offers, lasts, tickVols;
-	private String bid, offer, last, tickVol;
+	private String[] exchanges, commodites,contracts, 
+						bids, bidVols, offers, offerVols, lasts, lastVols;
+	private String bid, bidVol, offer, offerVol, last, lastVol;
 	private PriceDetail[][] bidDOMs, offerDOMs;
     private boolean isContractCounted;
     
@@ -48,9 +49,11 @@ public class Feeder {
     	contracts = new String[contractMap.size()];
     	exchanges = new String[contractMap.size()];
     	bids = new String[contractMap.size()];
+    	bidVols = new String[contractMap.size()];
     	offers = new String[contractMap.size()];
+    	offerVols = new String[contractMap.size()];
     	lasts = new String[contractMap.size()];
-    	tickVols =  new String[contractMap.size()];
+    	lastVols =  new String[contractMap.size()];
     	bidDOMs = new PriceDetail[contractMap.size()][];
     	offerDOMs = new PriceDetail[contractMap.size()][];
     	symbols = new String[contractMap.size()];
@@ -73,19 +76,23 @@ public class Feeder {
     			commodites[index]= commodity;
     			contracts[index] = contract;
     			bids[index] = "0";
-    	    	offers[index] = "0";
-    	    	lasts[index] = "0";
-    	    	tickVols[index] = "0";
+    	    	bidVols[index] = "0";
+    			offers[index] = "0";
+    			offerVols[index] = "0";
+    			lasts[index] = "0";
+    	    	lastVols[index] = "0";
     	    	bidDOMs[index] = null;
     	    	offerDOMs[index] = null;
     	    	
     	    	//HUAN
     	    	quote = new Quote();
-    	    	quote.setTitle(symbols[index]);
+    	    	quote.setContract(symbols[index]);
     	    	quote.setBid(bids[index]);
-    	    	quote.setAsk(offers[index]);
+    	    	quote.setBidVol(bidVols[index]);
+    	    	quote.setOffer(offers[index]);
+    	    	quote.setOfferVol(offerVols[index]);
     	    	quote.setLast(lasts[index]);
-    	    	quote.setTickVol(tickVols[index]);
+    	    	quote.setLastVol(lastVols[index]);
     	    	lstQuotes.add(quote);
     		}
     		catch (Exception e) {
@@ -102,7 +109,7 @@ public class Feeder {
     	for(int index = 0; index < contractMap.size(); index++) {
     		try {
     			quoteTables[index] = new Quote();
-    			quoteTables[index].setTitle(symbols[index]);
+    			quoteTables[index].setContract(symbols[index]);
     			SubscribedItem item = contractMap.get(index);
     			SubcribeThread thread = new SubcribeThread(this, item);
     			thread.start();
@@ -151,9 +158,11 @@ public class Feeder {
     	commodites[index]= commodity;
     	contracts[index]= contract;
     	bids[index]=  prices.bid.price;
+    	bidVols[index]=  Integer.toString(prices.bid.volume);
     	offers[index]=  prices.offer.price;
+    	offerVols[index]= Integer.toString(prices.offer.volume);
     	lasts[index]=  prices.last[0].price;
-    	tickVols[index]=  Integer.toString(prices.offer.volume);
+    	lastVols[index]=  Integer.toString(prices.last[0].volume);
     	bidDOMs[index] = prices.bidDOM;
     	offerDOMs[index] = prices.offerDOM;
     	
@@ -193,15 +202,18 @@ public class Feeder {
             System.out.println("---------------------------------------------------------------");
             System.out.println(
             	itemKey + " " + index + " | " + symbol + " | " + bids[index] + " | " + offers[index] 
-            	 + " | " + lasts[index] + " | " + tickVols[index]);
-            Quote q = new Quote();
-            q.setTitle(symbol);
-            q.setBid(bids[index]);
-            q.setAsk(offers[index]);
-            q.setLast(lasts[index]);
-            q.setTickVol(tickVols[index]);
+            	 + " | " + lasts[index] + " | " + lastVols[index]);
+            Quote quote = new Quote();
             
-            quoteBean.updateRow(index, q);
+            quote.setContract(symbol);
+	    	quote.setBid(bids[index]);
+	    	quote.setBidVol(bidVols[index]);
+	    	quote.setOffer(offers[index]);
+	    	quote.setOfferVol(offerVols[index]);
+	    	quote.setLast(lasts[index]);
+	    	quote.setLastVol(lastVols[index]);
+
+            quoteBean.updateRow(index, quote);
     }
 
     public ArrayList<SubscribedItem> getContractMap() {
