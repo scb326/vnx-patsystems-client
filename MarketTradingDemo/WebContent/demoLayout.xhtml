@@ -18,7 +18,7 @@
 		}
 		
 		.priceUpdatedTable {
-			height:225px;
+			height:180px;
 		}
 		
 		.alignTop {
@@ -40,7 +40,7 @@
 		
 		.priceUpdatedPanel {
 			width:70%;
-			height: 280px;
+			height: 230px;
 			vertical-align: top;
 		}
 		
@@ -70,6 +70,10 @@
 			color: black;
 			width: 100px;
 			height: 25px;
+		}
+		
+		.priceFooterCol {
+			text-align: center;
 		}
 		</style>
 		<script type="text/javascript">
@@ -145,9 +149,9 @@
 												<f:facet name="header">
 													<rich:columnGroup>
 														<rich:column width="5%">
-															<h:outputText value="Icon" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+															<h:outputText value="" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 														</rich:column>
-														<rich:column width="25%">
+														<rich:column width="30%">
 															<h:outputText value="Contract"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 														</rich:column>
 														<rich:column width="10%">
@@ -159,7 +163,7 @@
 														<rich:column width="10%">
 															<h:outputText value="Offer"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 														</rich:column>
-														<rich:column width="15%">
+														<rich:column width="10%">
 															<h:outputText value="Offer Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 														</rich:column>
 														<rich:column width="10%">
@@ -187,36 +191,42 @@
 							                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
 							                            	<h:outputText value="#{quote.bid}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.bidStyleClass}"></h:outputText>
 							                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}" />
+							                            	<rich:spacer width="10" height="5" rendered="#{!quote.bidUpdated}"/>
 							                            </h:panelGrid>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
 							                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
 							                            	<h:outputText value="#{quote.bidVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.bidVolStyleClass}"></h:outputText>
 							                            	<h:graphicImage value="/images/#{quote.bidVolStatus}.png" rendered="#{quote.bidVolUpdated}"/>
+							                            	<rich:spacer width="10" height="5" rendered="#{!quote.bidVolUpdated}"/>
 							                            </h:panelGrid>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
 								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
 								                            <h:outputText value="#{quote.offer}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.offerStyleClass}"></h:outputText>
 								                            <h:graphicImage value="/images/#{quote.offerStatus}.png" rendered="#{quote.offerUpdated}"/>
+								                            <rich:spacer width="10" height="5" rendered="#{!quote.offerUpdated}"/>
 								                        </h:panelGrid>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
 								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
 								                            <h:outputText value="#{quote.offerVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.offerVolStyleClass}"></h:outputText>
 								                            <h:graphicImage value="/images/#{quote.offerVolStatus}.png" rendered="#{quote.offerVolUpdated}"/>
+								                            <rich:spacer width="10" height="5" rendered="#{!quote.offerVolUpdated}"/>
 								                        </h:panelGrid>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
 								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
 								                            <h:outputText value="#{quote.last}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.lastStyleClass}"></h:outputText>
 								                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
+								                            <rich:spacer width="10" height="5" rendered="#{!quote.lastUpdated}"/>
 								                        </h:panelGrid>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
 								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
 								                            <h:outputText value="#{quote.lastVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.lastVolStyleClass}"></h:outputText>
 								                            <h:graphicImage value="/images/#{quote.lastVolStatus}.png" rendered="#{quote.lastVolUpdated}"/>
+								                            <rich:spacer width="10" height="5" rendered="#{!quote.lastVolUpdated}"/>
 								                        </h:panelGrid>
 							                        </rich:column>
 							                        
@@ -255,6 +265,18 @@
 								        </rich:dataGrid>
 							        </rich:tab>
 							    </rich:tabPanel>
+								<h:panelGrid columns="3" columnClasses="priceFooterCol, priceFooterCol, priceFooterCol" style="background-color:#ffffff;" width="100%">
+									<a4j:commandButton id="btnFilter" value="Filter" styleClass="ui-state-default ui-corner-all"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"
+											  onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
+									<rich:panel style="border:0px;vertical-align:middle;">
+										<h:selectBooleanCheckbox label="One lot click trading" style="color:#000000;" title="One lot click trading"/>
+										<h:outputText value="One lot click trading" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
+									</rich:panel>
+									<rich:panel style="border:0px">
+										<h:selectBooleanCheckbox label="Confirmation trading" style="color:#000000;" title="Confirmation trading"/>
+										<h:outputText value="Confirmation trading" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>  
+									</rich:panel>
+								</h:panelGrid>
 							</rich:panel>
 							
 							<rich:panel styleClass="ui-dialog-content ui-widget-content ui-corner-all" style="border: 0;" width="100%">
