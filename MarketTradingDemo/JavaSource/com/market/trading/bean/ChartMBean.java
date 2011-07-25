@@ -1,4 +1,4 @@
-package com.market.trading.model;
+package com.market.trading.bean;
 
 import java.text.NumberFormat;
 

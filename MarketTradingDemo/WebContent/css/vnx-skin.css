@@ -1,0 +1,70 @@
+.body-non-pad-margin {
+	padding: 0px;
+	margin: 0px;
+	overflow: auto;
+}
+
+.priceUpdatedTable {
+	height:180px;
+}
+
+.alignTop {
+	vertical-align: top;
+}
+
+.updated_cell {
+	color: blue;
+}
+
+.adsPanel {
+	width:12%;
+	vertical-align: top;
+}
+
+.mainPanel {
+	vertical-align: top;
+}
+
+.priceUpdatedPanel {
+	width:70%;
+	height: 230px;
+	vertical-align: top;
+}
+
+.tradePanel {
+	width:30%;
+	height:280px;
+	vertical-align: top;
+}
+.colValue {
+	width:70%;
+	text-align: right;
+}
+.colIcon {
+	width:30%;
+	text-align: left;
+}
+.body_bg {
+	background-image:url(../images/ui-bg_diagonals-thick_8_333333_40x40.png);
+	background-repeat:repeat-y-x;
+	background-color: #5C5C5C;
+}
+
+.rich-tab-header {
+	font-family: Tahoma;
+	font-size: larger;
+	font-weight: bold;
+	color: black;
+	width: 100px;
+	height: 25px;
+}
+
+.priceFooterCol {
+	text-align: center;
+}
+.col1 {
+	width: 95%;
+}
+.col2 {
+	width: 5%; 
+}
