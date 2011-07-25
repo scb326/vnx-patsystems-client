@@ -86,6 +86,11 @@ public class Feeder {
     	    	
     	    	//HUAN
     	    	quote = new Quote();
+                if (symbols[index].indexOf("COFFEE") >= 0) {
+                	quote.setIcon("coffee");
+                } else if (symbols[index].indexOf("RUBBER") >= 0) {
+                	quote.setIcon("rubber");
+                }
     	    	quote.setContract(symbols[index]);
     	    	quote.setBid(bids[index]);
     	    	quote.setBidVol(bidVols[index]);

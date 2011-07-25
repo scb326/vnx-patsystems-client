@@ -75,6 +75,12 @@
 		.priceFooterCol {
 			text-align: center;
 		}
+		.col1 {
+			width: 95%;
+		}
+		.col2 {
+			width: 5%; 
+		}
 		</style>
 		<script type="text/javascript">
 			var timer_id;
@@ -182,7 +188,7 @@
 							                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
 							                        var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
 							                        <rich:column style="#{quote.rowStyle}">
-							                            <h:outputText value="#{quote.icon}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+							                            <h:graphicImage value="/images/#{quote.icon}.png"/>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
 							                            <h:outputText value="#{quote.contract}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
