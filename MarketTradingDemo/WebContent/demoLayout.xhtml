@@ -253,17 +253,17 @@
 							            <rich:dataGrid value="#{quoteBean.quotes}" var="quote" columns="3" elements="9" width="600px" id="dataGrid">
 								            <rich:panel bodyClass="pbody">
 								                <f:facet name="header">
-								                    <h:outputText value="#{quote.title}"></h:outputText>
+								                    <h:outputText value="#{quote.contract}"></h:outputText>
 								                </f:facet>
 								                <h:panelGrid columns="2">
 								                    <h:outputText value="Price:" styleClass="label"></h:outputText>
 								                    <h:outputText value="#{quote.bid}" />
 								                    <h:outputText value="Mileage:" styleClass="label"></h:outputText>
-								                    <h:outputText value="#{quote.ask}" />
+								                    <h:outputText value="#{quote.offer}" />
 								                    <h:outputText value="VIN:" styleClass="label"></h:outputText>
 								                    <h:outputText value="#{quote.last}" />
 								                    <h:outputText value="Stock:" styleClass="label"></h:outputText>
-								                    <h:outputText value="#{quote.tickVol}" />
+								                    <h:outputText value="#{quote.lastVol}" />
 								                </h:panelGrid>
 								            </rich:panel>
 								            <f:facet name="footer">
