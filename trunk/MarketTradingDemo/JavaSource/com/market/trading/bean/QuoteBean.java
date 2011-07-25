@@ -84,29 +84,6 @@ public class QuoteBean implements QuoteBeanDelegate{
 			double newVal = 0;
 			
 			try {
-				oldVal = Double.parseDouble(quotes.get(index).getAsk());
-			} catch (Exception e) {
-				oldVal = 0;
-			}
-			
-			try {
-				newVal = Double.parseDouble(updatedQuote.getAsk());
-			} catch (Exception e) {
-				newVal = 0;
-			}
-			
-			if (newVal > oldVal) {
-				quotes.get(index).setAskUpdated(true);
-				quotes.get(index).setAskStatus("inc");
-				quotes.get(index).setAskStyleClass(CELL_UPDATED_STYLE);
-			} else if (newVal < oldVal) {
-				quotes.get(index).setAskUpdated(true);
-				quotes.get(index).setAskStatus("dec");
-				quotes.get(index).setAskStyleClass(CELL_UPDATED_STYLE);
-			}
-			quotes.get(index).setAsk(updatedQuote.getAsk());
-			
-			try {
 				oldVal = Double.parseDouble(quotes.get(index).getBid());
 			} catch (Exception e) {
 				oldVal = 0;
@@ -118,7 +95,6 @@ public class QuoteBean implements QuoteBeanDelegate{
 				newVal = 0;
 			}
 			
-			
 			if (newVal > oldVal) {
 				quotes.get(index).setBidUpdated(true);
 				quotes.get(index).setBidStatus("inc");
@@ -129,6 +105,84 @@ public class QuoteBean implements QuoteBeanDelegate{
 				quotes.get(index).setBidStyleClass(CELL_UPDATED_STYLE);
 			}
 			quotes.get(index).setBid(updatedQuote.getBid());
+			
+			
+			
+			try {
+				oldVal = Double.parseDouble(quotes.get(index).getBidVol());
+			} catch (Exception e) {
+				oldVal = 0;
+			}
+			
+			try {
+				newVal = Double.parseDouble(updatedQuote.getBidVol());
+			} catch (Exception e) {
+				newVal = 0;
+			}
+		
+			if (newVal > oldVal) {
+				quotes.get(index).setBidVolUpdated(true);
+				quotes.get(index).setBidVolStatus("inc");
+				quotes.get(index).setBidVolStyleClass(CELL_UPDATED_STYLE);
+			} else if (newVal < oldVal) {
+				quotes.get(index).setBidVolUpdated(true);
+				quotes.get(index).setBidVolStatus("dec");
+				quotes.get(index).setBidVolStyleClass(CELL_UPDATED_STYLE);
+			}
+			quotes.get(index).setBidVol(updatedQuote.getBidVol());
+			
+			
+			
+			try {
+				oldVal = Double.parseDouble(quotes.get(index).getOffer());
+			} catch (Exception e) {
+				oldVal = 0;
+			}
+			
+			try {
+				newVal = Double.parseDouble(updatedQuote.getOffer());
+			} catch (Exception e) {
+				newVal = 0;
+			}
+			
+			
+			
+			if (newVal > oldVal) {
+				quotes.get(index).setOfferUpdated(true);
+				quotes.get(index).setOfferStatus("inc");
+				quotes.get(index).setOfferStyleClass(CELL_UPDATED_STYLE);
+			} else if (newVal < oldVal) {
+				quotes.get(index).setOfferUpdated(true);
+				quotes.get(index).setOfferStatus("dec");
+				quotes.get(index).setOfferStyleClass(CELL_UPDATED_STYLE);
+			}
+			quotes.get(index).setOffer(updatedQuote.getOffer());
+			
+			
+			try {
+				oldVal = Double.parseDouble(quotes.get(index).getOfferVol());
+			} catch (Exception e) {
+				oldVal = 0;
+			}
+			
+			try {
+				newVal = Double.parseDouble(updatedQuote.getOfferVol());
+			} catch (Exception e) {
+				newVal = 0;
+			}
+			
+			if (newVal > oldVal) {
+				quotes.get(index).setOfferVolUpdated(true);
+				quotes.get(index).setOfferVolStatus("inc");
+				quotes.get(index).setOfferVolStyleClass(CELL_UPDATED_STYLE);
+			} else if (newVal < oldVal) {
+				quotes.get(index).setOfferVolUpdated(true);
+				quotes.get(index).setOfferVolStatus("dec");
+				quotes.get(index).setOfferVolStyleClass(CELL_UPDATED_STYLE);
+			}
+			quotes.get(index).setOfferVol(updatedQuote.getOfferVol());
+			
+			
 			
 			try {
 				oldVal = Double.parseDouble(quotes.get(index).getLast());
@@ -143,7 +197,6 @@ public class QuoteBean implements QuoteBeanDelegate{
 			}
 			
 			
-			
 			if (newVal > oldVal) {
 				quotes.get(index).setLastUpdated(true);
 				quotes.get(index).setLastStatus("inc");
@@ -155,32 +208,36 @@ public class QuoteBean implements QuoteBeanDelegate{
 			}
 			quotes.get(index).setLast(updatedQuote.getLast());
 			
+			
+			
+			
 			try {
-				oldVal = Double.parseDouble(quotes.get(index).getTickVol());
+				oldVal = Double.parseDouble(quotes.get(index).getLastVol());
 			} catch (Exception e) {
 				oldVal = 0;
 			}
 			
 			try {
-				newVal = Double.parseDouble(updatedQuote.getTickVol());
+				newVal = Double.parseDouble(updatedQuote.getLastVol());
 			} catch (Exception e) {
 				newVal = 0;
 			}
 			
 			
 			if (newVal > oldVal) {
-				quotes.get(index).setTickVolUpdated(true);
-				quotes.get(index).setTickVolStatus("inc");
-				quotes.get(index).setTickVolStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setLastVolUpdated(true);
+				quotes.get(index).setLastVolStatus("inc");
+				quotes.get(index).setLastVolStyleClass(CELL_UPDATED_STYLE);
 			} else if (newVal < oldVal) {
-				quotes.get(index).setTickVolUpdated(true);
-				quotes.get(index).setTickVolStatus("dec");
-				quotes.get(index).setTickVolStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setLastVolUpdated(true);
+				quotes.get(index).setLastVolStatus("dec");
+				quotes.get(index).setLastVolStyleClass(CELL_UPDATED_STYLE);
 			}
-			quotes.get(index).setTickVol(updatedQuote.getTickVol());
+			quotes.get(index).setLastVol(updatedQuote.getLastVol());
 			
-			if (quotes.get(index).isAskUpdated() || quotes.get(index).isBidUpdated()
-				|| quotes.get(index).isLastUpdated() || quotes.get(index).isTickVolUpdated()) {
+			if (quotes.get(index).isBidUpdated() || quotes.get(index).isBidVolUpdated()
+				|| quotes.get(index).isOfferUpdated() || quotes.get(index).isOfferVolUpdated()
+				|| quotes.get(index).isLastUpdated() || quotes.get(index).isLastVolUpdated()) {
 				
 				quotes.get(index).setRowStyle(ROW_UPDATED_STYLE);
 				
@@ -213,14 +270,18 @@ public class QuoteBean implements QuoteBeanDelegate{
 			
 			for (int i = 0; i < this.updatedQuotes.size(); i++) {
 				if (this.updatedQuotes.get(i)[1] >= 6) {
-					quotes.get(this.updatedQuotes.get(i)[0]).setAskUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setBidUpdated(false);
+					quotes.get(this.updatedQuotes.get(i)[0]).setBidVolUpdated(false);
+					quotes.get(this.updatedQuotes.get(i)[0]).setOfferUpdated(false);
+					quotes.get(this.updatedQuotes.get(i)[0]).setOfferVolUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setLastUpdated(false);
-					quotes.get(this.updatedQuotes.get(i)[0]).setTickVolUpdated(false);
-					quotes.get(this.updatedQuotes.get(i)[0]).setAskStyleClass("");
+					quotes.get(this.updatedQuotes.get(i)[0]).setLastVolUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setBidStyleClass("");
+					quotes.get(this.updatedQuotes.get(i)[0]).setBidVolStyleClass("");
+					quotes.get(this.updatedQuotes.get(i)[0]).setOfferStyleClass("");
+					quotes.get(this.updatedQuotes.get(i)[0]).setOfferVolStyleClass("");
 					quotes.get(this.updatedQuotes.get(i)[0]).setLastStyleClass("");
-					quotes.get(this.updatedQuotes.get(i)[0]).setTickVolStyleClass("");
+					quotes.get(this.updatedQuotes.get(i)[0]).setLastVolStyleClass("");
 					quotes.get(this.updatedQuotes.get(i)[0]).setRowStyle("");
 					listRemove.add(this.updatedQuotes.get(i));
 				} else {

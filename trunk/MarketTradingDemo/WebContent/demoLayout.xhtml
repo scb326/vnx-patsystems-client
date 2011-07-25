@@ -51,9 +51,11 @@
 		}
 		.colValue {
 			width:70%;
+			text-align: right;
 		}
 		.colIcon {
 			width:30%;
+			text-align: left;
 		}
 		.body_bg {
 			background-image:url(images/ui-bg_diagonals-thick_8_333333_40x40.png);
@@ -142,26 +144,32 @@
 			
 												<f:facet name="header">
 													<rich:columnGroup>
-														<rich:column width="10%">
-															<h:outputText value="Icon" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+														<rich:column width="5%">
+															<h:outputText value="Icon" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 														</rich:column>
 														<rich:column width="25%">
-															<h:outputText value="Title"  style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
-														</rich:column>
-														<rich:column width="15%">
-															<h:outputText value="Bid" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';" />
-														</rich:column>
-														<rich:column width="15%">
-															<h:outputText value="Ask"  style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
-														</rich:column>
-														<rich:column width="15%">
-															<h:outputText value="Last"  style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
-														</rich:column>
-														<rich:column width="15%">
-															<h:outputText value="TickVol"  style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+															<h:outputText value="Contract"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 														</rich:column>
 														<rich:column width="10%">
-															<h:outputText value="DOM"  style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+															<h:outputText value="Bid" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';" />
+														</rich:column>
+														<rich:column width="10%">
+															<h:outputText value="Bid Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+														</rich:column>
+														<rich:column width="10%">
+															<h:outputText value="Offer"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText value="Offer Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+														</rich:column>
+														<rich:column width="10%">
+															<h:outputText value="Last"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+														</rich:column>
+														<rich:column width="10%">
+															<h:outputText value="Last Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+														</rich:column>
+														<rich:column width="5%">
+															<h:outputText value="DOM"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 														</rich:column>
 													</rich:columnGroup>
 												</f:facet>
@@ -170,38 +178,51 @@
 							                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
 							                        var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
 							                        <rich:column style="#{quote.rowStyle}">
-							                            <h:outputText value="#{quote.icon}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+							                            <h:outputText value="#{quote.icon}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
-							                            <h:outputText value="#{quote.title}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+							                            <h:outputText value="#{quote.contract}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
-							                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon">
-							                            	<h:outputText value="#{quote.bid}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';#{quote.bidStyleClass}"></h:outputText>
-							                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
+							                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+							                            	<h:outputText value="#{quote.bid}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.bidStyleClass}"></h:outputText>
+							                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}" />
 							                            </h:panelGrid>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
-								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-								                            <h:outputText value="#{quote.ask}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';#{quote.askStyleClass}"></h:outputText>
-								                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
+							                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+							                            	<h:outputText value="#{quote.bidVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.bidVolStyleClass}"></h:outputText>
+							                            	<h:graphicImage value="/images/#{quote.bidVolStatus}.png" rendered="#{quote.bidVolUpdated}"/>
+							                            </h:panelGrid>
+							                        </rich:column>
+							                        <rich:column style="#{quote.rowStyle}">
+								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+								                            <h:outputText value="#{quote.offer}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.offerStyleClass}"></h:outputText>
+								                            <h:graphicImage value="/images/#{quote.offerStatus}.png" rendered="#{quote.offerUpdated}"/>
 								                        </h:panelGrid>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
-								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-								                            <h:outputText value="#{quote.last}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';#{quote.lastStyleClass}"></h:outputText>
+								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+								                            <h:outputText value="#{quote.offerVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.offerVolStyleClass}"></h:outputText>
+								                            <h:graphicImage value="/images/#{quote.offerVolStatus}.png" rendered="#{quote.offerVolUpdated}"/>
+								                        </h:panelGrid>
+							                        </rich:column>
+							                        <rich:column style="#{quote.rowStyle}">
+								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+								                            <h:outputText value="#{quote.last}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.lastStyleClass}"></h:outputText>
 								                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
 								                        </h:panelGrid>
 							                        </rich:column>
 							                        <rich:column style="#{quote.rowStyle}">
-								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-								                            <h:outputText value="#{quote.tickVol}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';#{quote.tickVolStyleClass}"></h:outputText>
-								                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
+								                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+								                            <h:outputText value="#{quote.lastVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.lastVolStyleClass}"></h:outputText>
+								                            <h:graphicImage value="/images/#{quote.lastVolStatus}.png" rendered="#{quote.lastVolUpdated}"/>
 								                        </h:panelGrid>
 							                        </rich:column>
+							                        
 							                        <rich:column style="#{quote.rowStyle}">
 							                        	<a4j:commandLink style="COLOR: #0000ff;">
-							                        		<h:outputText value="#{quote.dom}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+							                        		<h:outputText value="#{quote.dom}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
 							                        	</a4j:commandLink>
 							                            
 							                        </rich:column>                
@@ -241,14 +262,14 @@
 									<rich:tab reRender="tradeTabId" label="Trade">
 					            		<!-- Trade Input area -->
 					            		<h:panelGrid columns="2" width="100%">
-					            			<h:outputText value="Exchange" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
-					            			<h:selectOneMenu style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';">
+					            			<h:outputText value="Exchange" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
+					            			<h:selectOneMenu style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';">
 												<f:selectItem itemLabel="SGX" itemValue="SGX"/>
 												<f:selectItem itemLabel="VNXSIM" itemValue="VNXSIM"/>
 											</h:selectOneMenu>
 					            		
-					            			<h:outputText value="Commodity" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
-					            			<h:selectOneMenu style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';">
+					            			<h:outputText value="Commodity" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
+					            			<h:selectOneMenu style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';">
 												<f:selectItem itemLabel="QCR" itemValue="QCR"/>
 												<f:selectItem itemLabel="R COFFEE" itemValue="R COFFEE"/>
 												<f:selectItem itemLabel="RUBBER" itemValue="RUBBER"/>
@@ -257,8 +278,8 @@
 												<f:selectItem itemLabel="VRSS3" itemValue="VRSS3"/>
 											</h:selectOneMenu>
 					            		
-					            			<h:outputText value="Contract Date" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
-					            			<h:selectOneMenu style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';">
+					            			<h:outputText value="Contract Date" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
+					            			<h:selectOneMenu style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';">
 												<f:selectItem itemLabel="JAN" itemValue="JAN"/>
 												<f:selectItem itemLabel="FEB" itemValue="FEB"/>
 												<f:selectItem itemLabel="MAR" itemValue="MAR"/>
@@ -273,8 +294,8 @@
 												<f:selectItem itemLabel="DEC" itemValue="DEC"/>
 											</h:selectOneMenu>
 					            		
-					            			<h:outputText value="Order Type" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
-					            			<h:selectOneMenu style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';">
+					            			<h:outputText value="Order Type" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
+					            			<h:selectOneMenu style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';">
 												<f:selectItem itemLabel="Limit" itemValue="Limit"/>
 												<f:selectItem itemLabel="Limit FAK" itemValue="Limit FAK"/>
 												<f:selectItem itemLabel="Limit FOK" itemValue="Limit FOK"/>
@@ -284,23 +305,23 @@
 												<f:selectItem itemLabel="RFQ" itemValue="RFQ"/>
 											</h:selectOneMenu>
 											
-											<h:outputText value="Lots" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
-											<rich:inputNumberSpinner style="margin-left:2px;FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';" value="1"/>
+											<h:outputText value="Lots" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
+											<rich:inputNumberSpinner style="margin-left:2px;FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';" value="1"/>
 											
-											<h:outputText value="Price" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
-											<h:inputText size="7" value="1000" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+											<h:outputText value="Price" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
+											<h:inputText size="7" value="1000" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
 					            		</h:panelGrid>
 					            		
-					            		<h:selectOneRadio style="margin-left:65px;FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';">
+					            		<h:selectOneRadio style="margin-left:65px;FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';">
 											<f:selectItem id="sir1" itemLabel="Open" itemValue="Open" />
 											<f:selectItem id="sir2" itemLabel="Close" itemValue="Close" />
 										</h:selectOneRadio>
 										
 										<h:panelGroup style="margin-left:75px" width="100%">
-											 <a4j:commandButton id="btnSell" value="Sell" styleClass="ui-state-default ui-corner-all"  style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"
+											 <a4j:commandButton id="btnSell" value="Sell" styleClass="ui-state-default ui-corner-all"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"
 											  onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
 											 <rich:spacer width="10" height="5"/>
-											 <a4j:commandButton id="btnBuy" value="Buy" styleClass="ui-state-default ui-corner-all"  style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"
+											 <a4j:commandButton id="btnBuy" value="Buy" styleClass="ui-state-default ui-corner-all"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"
 											 onmouseover="this.className='ui-state-hover ui-corner-all'" onmouseout="this.className='ui-state-default ui-corner-all'"/>
 										</h:panelGroup>
 							        </rich:tab>
@@ -320,22 +341,22 @@
 						                    <f:facet name="header">
 						                        <rich:columnGroup>
 						                            <rich:column>
-						                                <h:outputText value="OrderID" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+						                                <h:outputText value="OrderID" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 						                            </rich:column>
 						                            <rich:column>
-						                                <h:outputText value="Status" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+						                                <h:outputText value="Status" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 						                            </rich:column>
 						                            <rich:column>
-						                                <h:outputText value="Exchange" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+						                                <h:outputText value="Exchange" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 						                            </rich:column>
 						                            <rich:column>
-						                                <h:outputText value="Commodity" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+						                                <h:outputText value="Commodity" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 						                            </rich:column>
 						                            <rich:column>
-						                                <h:outputText value="Contract" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+						                                <h:outputText value="Contract" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 						                            </rich:column>
 						                            <rich:column>
-						                                <h:outputText value="Operation" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+						                                <h:outputText value="Operation" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 						                            </rich:column>
 						                        </rich:columnGroup>
 						                    </f:facet>
@@ -344,24 +365,24 @@
 						                        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
 						                        var="status" value="#{quoteBean.statusInfos}" id="tblStatusSubTable">
 						                        <rich:column >
-						                            <h:outputText value="#{status.orderId}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+						                            <h:outputText value="#{status.orderId}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
 						                        </rich:column>
 						                        <rich:column align="center">
-						                            <h:outputText value="#{status.status}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+						                            <h:outputText value="#{status.status}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
 						                        </rich:column>
 						                        <rich:column>
-							                        <h:outputText value="#{status.exchange}"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+							                        <h:outputText value="#{status.exchange}"  style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
 						                        </rich:column>
 						                        <rich:column >
-							                        <h:outputText value="#{status.commodity}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';" ></h:outputText>
+							                        <h:outputText value="#{status.commodity}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';" ></h:outputText>
 						                        </rich:column>
 						                        <rich:column align="center">
-							                        <h:outputText value="#{status.contractDate}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';" ></h:outputText>
+							                        <h:outputText value="#{status.contractDate}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';" ></h:outputText>
 						                        </rich:column>    
 						                         <rich:column align="center">
 						                         	<h:panelGrid columns="2">
-								                        <h:commandLink value="amend" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';" /> 
-								                        <h:commandLink value="cancel" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';" /> 
+								                        <h:commandLink value="amend" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';" /> 
+								                        <h:commandLink value="cancel" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';" /> 
 							                        </h:panelGrid>
 						                        </rich:column>  
 						                                     
@@ -377,22 +398,22 @@
 							            	<f:facet name="header">
 							            		<rich:columnGroup>
 							            			<rich:column >
-							            				<h:outputText value="Fill ID" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="Fill ID" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column >
-							            				<h:outputText value="Order ID" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="Order ID" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column >
-							            				<h:outputText value="Lots" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="Lots" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column >
-							            				<h:outputText value="Price" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="Price" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column >
-							            				<h:outputText value="Filled" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="Filled" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column >
-							            				<h:outputText value="Received" style="FONT-SIZE: 14px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="Received" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            		</rich:columnGroup>
 							            	</f:facet>
@@ -402,23 +423,23 @@
 						                        	 var = "fill" value="#{quoteBean.fillInfors}"  id="tblFillSubTable">
 							            			<rich:column>
 							            				<h:panelGrid column="2">
-							            					<h:outputText value="#{fill.fillId}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							            					<h:outputText value="#{fill.fillId}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
 							            				</h:panelGrid>
 							            			</rich:column>
 							            			<rich:column>
-							            				<h:outputText value="#{fill.orderId}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="#{fill.orderId}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column>
-							            				<h:outputText value="#{fill.lotNum}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="#{fill.lotNum}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column>
-							            				<h:outputText value="#{fill.price}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="#{fill.price}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column>
-							            				<h:outputText value="#{fill.filled}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="#{fill.filled}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            			<rich:column>
-							            				<h:outputText value="#{fill.received}" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							            				<h:outputText value="#{fill.received}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"/>
 							            			</rich:column>
 							            	</rich:subTable>
 							            	
