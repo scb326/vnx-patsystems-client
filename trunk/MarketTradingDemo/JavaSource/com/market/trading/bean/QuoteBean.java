@@ -15,7 +15,8 @@ import com.vnx.patsystems.util.Feeder;
 public class QuoteBean implements QuoteBeanDelegate{
 	public static final String TRADING = "TRADE";
 	public static final String ORDERING = "ORDER";
-	public static final String CELL_UPDATED_STYLE = "color:blue;";
+	public static final String INC_CELL_STYLE = "color:green;";
+	public static final String DEC_CELL_STYLE = "color:red;";
 	public static final String ROW_UPDATED_STYLE = "background-color:#FFFFC4;";
 	
 	private static boolean isFeederReady = false;
@@ -98,11 +99,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setBidUpdated(true);
 				quotes.get(index).setBidStatus("inc");
-				quotes.get(index).setBidStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setBidStyleClass(INC_CELL_STYLE);
 			} else if (newVal < oldVal) {
 				quotes.get(index).setBidUpdated(true);
 				quotes.get(index).setBidStatus("dec");
-				quotes.get(index).setBidStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setBidStyleClass(DEC_CELL_STYLE);
 			}
 			quotes.get(index).setBid(updatedQuote.getBid());
 			
@@ -123,11 +124,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setBidVolUpdated(true);
 				quotes.get(index).setBidVolStatus("inc");
-				quotes.get(index).setBidVolStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setBidVolStyleClass(INC_CELL_STYLE);
 			} else if (newVal < oldVal) {
 				quotes.get(index).setBidVolUpdated(true);
 				quotes.get(index).setBidVolStatus("dec");
-				quotes.get(index).setBidVolStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setBidVolStyleClass(DEC_CELL_STYLE);
 			}
 			quotes.get(index).setBidVol(updatedQuote.getBidVol());
 			
@@ -150,11 +151,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setOfferUpdated(true);
 				quotes.get(index).setOfferStatus("inc");
-				quotes.get(index).setOfferStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setOfferStyleClass(INC_CELL_STYLE);
 			} else if (newVal < oldVal) {
 				quotes.get(index).setOfferUpdated(true);
 				quotes.get(index).setOfferStatus("dec");
-				quotes.get(index).setOfferStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setOfferStyleClass(DEC_CELL_STYLE);
 			}
 			quotes.get(index).setOffer(updatedQuote.getOffer());
 			
@@ -174,11 +175,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setOfferVolUpdated(true);
 				quotes.get(index).setOfferVolStatus("inc");
-				quotes.get(index).setOfferVolStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setOfferVolStyleClass(INC_CELL_STYLE);
 			} else if (newVal < oldVal) {
 				quotes.get(index).setOfferVolUpdated(true);
 				quotes.get(index).setOfferVolStatus("dec");
-				quotes.get(index).setOfferVolStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setOfferVolStyleClass(DEC_CELL_STYLE);
 			}
 			quotes.get(index).setOfferVol(updatedQuote.getOfferVol());
 			
@@ -200,11 +201,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setLastUpdated(true);
 				quotes.get(index).setLastStatus("inc");
-				quotes.get(index).setLastStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setLastStyleClass(INC_CELL_STYLE);
 			} else if (newVal < oldVal) {
 				quotes.get(index).setLastUpdated(true);
 				quotes.get(index).setLastStatus("dec");
-				quotes.get(index).setLastStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setLastStyleClass(DEC_CELL_STYLE);
 			}
 			quotes.get(index).setLast(updatedQuote.getLast());
 			
@@ -227,11 +228,11 @@ public class QuoteBean implements QuoteBeanDelegate{
 			if (newVal > oldVal) {
 				quotes.get(index).setLastVolUpdated(true);
 				quotes.get(index).setLastVolStatus("inc");
-				quotes.get(index).setLastVolStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setLastVolStyleClass(INC_CELL_STYLE);
 			} else if (newVal < oldVal) {
 				quotes.get(index).setLastVolUpdated(true);
 				quotes.get(index).setLastVolStatus("dec");
-				quotes.get(index).setLastVolStyleClass(CELL_UPDATED_STYLE);
+				quotes.get(index).setLastVolStyleClass(DEC_CELL_STYLE);
 			}
 			quotes.get(index).setLastVol(updatedQuote.getLastVol());
 			
@@ -269,20 +270,22 @@ public class QuoteBean implements QuoteBeanDelegate{
 			ArrayList<int[]> listRemove = new ArrayList<int[]>();
 			
 			for (int i = 0; i < this.updatedQuotes.size(); i++) {
-				if (this.updatedQuotes.get(i)[1] >= 2) {
+				if (this.updatedQuotes.get(i)[1] == 2) {
+					quotes.get(this.updatedQuotes.get(i)[0]).setRowStyle("");
+					this.updatedQuotes.get(i)[1]++;
+				} else if (this.updatedQuotes.get(i)[1] >= 5) {
 					quotes.get(this.updatedQuotes.get(i)[0]).setBidUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setBidVolUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setOfferUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setOfferVolUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setLastUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setLastVolUpdated(false);
-					quotes.get(this.updatedQuotes.get(i)[0]).setBidStyleClass("");
-					quotes.get(this.updatedQuotes.get(i)[0]).setBidVolStyleClass("");
-					quotes.get(this.updatedQuotes.get(i)[0]).setOfferStyleClass("");
-					quotes.get(this.updatedQuotes.get(i)[0]).setOfferVolStyleClass("");
-					quotes.get(this.updatedQuotes.get(i)[0]).setLastStyleClass("");
-					quotes.get(this.updatedQuotes.get(i)[0]).setLastVolStyleClass("");
-					quotes.get(this.updatedQuotes.get(i)[0]).setRowStyle("");
+//					quotes.get(this.updatedQuotes.get(i)[0]).setBidStyleClass("");
+//					quotes.get(this.updatedQuotes.get(i)[0]).setBidVolStyleClass("");
+//					quotes.get(this.updatedQuotes.get(i)[0]).setOfferStyleClass("");
+//					quotes.get(this.updatedQuotes.get(i)[0]).setOfferVolStyleClass("");
+//					quotes.get(this.updatedQuotes.get(i)[0]).setLastStyleClass("");
+//					quotes.get(this.updatedQuotes.get(i)[0]).setLastVolStyleClass("");
 					listRemove.add(this.updatedQuotes.get(i));
 				} else {
 					this.updatedQuotes.get(i)[1]++;

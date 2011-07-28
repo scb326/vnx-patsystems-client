@@ -14,7 +14,8 @@
 		<link type="text/css" href="css/vnx-skin.css" rel="stylesheet" />
 		<script type="text/javascript" src="js/scripts.js"/>
 	</head>
-<body onload="doTimer()">
+<body onload="doTimer()" class="body-non-pad-margin">
+	<f:view>
 		<a4j:form id="mainForm">
 			<!-- Header -->
 			<ui:include src="/header.xhtml">
@@ -440,9 +441,8 @@
 				</h:panelGrid>
 				
 			</rich:panel>
-				
-			
 		</a4j:form>
+	</f:view>
 </body>
 </html>
 
