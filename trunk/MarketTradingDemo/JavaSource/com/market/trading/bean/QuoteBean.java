@@ -5,21 +5,21 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import com.market.trading.bean.delegate.QuoteBeanDelegate;
+
 import com.market.trading.model.FillInfo;
 import com.market.trading.model.Quote;
 import com.market.trading.model.StatusInfo;
 import com.market.trading.model.TradeInfo;
-import com.vnx.patsystems.util.Feeder;
+import com.vnx.patsystems.util.PatsystemsUtil;
+import com.vnx.patsystems.util.PatsystemsUtilDelegate;
 
-public class QuoteBean implements QuoteBeanDelegate{
+public class QuoteBean implements PatsystemsUtilDelegate {
 	public static final String TRADING = "TRADE";
 	public static final String ORDERING = "ORDER";
 	public static final String INC_CELL_STYLE = "color:green;";
 	public static final String DEC_CELL_STYLE = "color:red;";
 	public static final String ROW_UPDATED_STYLE = "background-color:#FFFFC4;";
 	
-	private static boolean isFeederReady = false;
 	private List<Quote> quotes = null;
 	private List<int[]> updatedQuotes = null;
 	private String strStyle = "outputText1";
@@ -33,14 +33,24 @@ public class QuoteBean implements QuoteBeanDelegate{
 	private List<StatusInfo> statusInfos = new ArrayList<StatusInfo>(); 
 	private List<FillInfo> fillInfors = new ArrayList<FillInfo>() ;
 	
+	private PatsystemsUtil patsystems;
+	
 	@PostConstruct
 	public void initData(){
 		//init status = trading in the first time
 		status = TRADING;
 		
-		if(!isFeederReady) {
-			isFeederReady = true;
-			new Feeder(this);
+		System.out.println("Init data..........................................");
+		
+		//feeder = (PatsystemsUtil) ServiceFinder.findBean("feeder");
+		patsystems = new PatsystemsUtil();
+		
+		if (this.patsystems != null) {
+			
+			this.patsystems.addDelegate(this);
+			System.out.println("Adding............delegate");
+		} else {
+			System.out.println("Delegate is nullllllllllllllllllllll");
 		}
 		
 		initStatus();
@@ -69,16 +79,35 @@ public class QuoteBean implements QuoteBeanDelegate{
 	}
 
 	@Override
-	public void fillQuotes(List<Quote> lstQuotes) {
+	public void fillData(List<com.vnx.patsystems.entity.Quote> lstQuotes) {
 		if (lstQuotes != null) {
-			quotes = lstQuotes;
+			//quotes = lstQuotes;
+			Quote q = null;
+			quotes = new LinkedList<Quote>();
+			
+			for (int i = 0; i < lstQuotes.size(); i++) {
+				q = new Quote();
+				if (lstQuotes.get(i).getContract().indexOf("COFFEE") >= 0) {
+                	q.setIcon("coffee");
+                } else if (lstQuotes.get(i).getContract().indexOf("RUBBER") >= 0) {
+                	q.setIcon("rubber");
+                }
+				q.setContract(lstQuotes.get(i).getContract());
+				q.setBid(lstQuotes.get(i).getBid());
+				q.setBidVol(lstQuotes.get(i).getBidVol());
+				q.setOffer(lstQuotes.get(i).getOffer());
+				q.setOfferVol(lstQuotes.get(i).getOfferVol());
+				q.setLast(lstQuotes.get(i).getLast());
+				q.setLastVol(lstQuotes.get(i).getLastVol());
+				quotes.add(q);
+			}
 		} else {
 			System.out.println("Nulllll");
 		}
 	}
 
 	@Override
-	public void updateRow(int index, Quote updatedQuote) {
+	public void updateRow(int index, com.vnx.patsystems.entity.Quote updatedQuote) {
 		if (index < quotes.size()) {
 			//quotes.get(index).setTitle(updatedQuote.getTitle());
 			double oldVal = 0;
@@ -280,12 +309,6 @@ public class QuoteBean implements QuoteBeanDelegate{
 					quotes.get(this.updatedQuotes.get(i)[0]).setOfferVolUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setLastUpdated(false);
 					quotes.get(this.updatedQuotes.get(i)[0]).setLastVolUpdated(false);
-//					quotes.get(this.updatedQuotes.get(i)[0]).setBidStyleClass("");
-//					quotes.get(this.updatedQuotes.get(i)[0]).setBidVolStyleClass("");
-//					quotes.get(this.updatedQuotes.get(i)[0]).setOfferStyleClass("");
-//					quotes.get(this.updatedQuotes.get(i)[0]).setOfferVolStyleClass("");
-//					quotes.get(this.updatedQuotes.get(i)[0]).setLastStyleClass("");
-//					quotes.get(this.updatedQuotes.get(i)[0]).setLastVolStyleClass("");
 					listRemove.add(this.updatedQuotes.get(i));
 				} else {
 					this.updatedQuotes.get(i)[1]++;
