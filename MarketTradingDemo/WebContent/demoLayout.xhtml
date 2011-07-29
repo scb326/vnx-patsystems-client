@@ -134,11 +134,11 @@
 							                    </rich:subTable>
 											</rich:dataTable>
 											<a4j:poll id="poll" interval="1000" enabled="true"
-											reRender="tblData, txtServerTime" action="#{quoteBean.refreshScreen}" />
+											reRender="tblData, priceGrid, txtServerTime" action="#{quoteBean.refreshScreen}" />
 										</rich:panel>
 							        </rich:tab>
 							        <rich:tab label="Grid"  labelWidth="100px">
-							            <rich:dataGrid value="#{quoteBean.quotes}" var="quote" columns="3" elements="9" width="600px" id="dataGrid">
+							            <rich:dataGrid value="#{quoteBean.quotes}" var="quote" columns="3" elements="9" width="600px" id="priceGrid">
 								            <rich:panel bodyClass="pbody">
 								                <f:facet name="header">
 								                    <h:outputText value="#{quote.contract}"></h:outputText>
