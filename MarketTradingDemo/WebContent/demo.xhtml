@@ -9,7 +9,12 @@
   <style type="text/css">
   .body3 {
    height: 200px;
-   width:500px;
+   width:800px;
+   padding:0px;margin:0px;
+   overflow: auto;
+  }
+  .body2 {
+   width:800px;
    padding:0px;margin:0px;
    overflow: auto;
   }
@@ -30,68 +35,213 @@
   <body>
 	<f:view>
 		<a4j:form>
-			<rich:datascroller align="left" for="tblData" maxPages="20" reRender="sc2" id="sc1" />
-			<rich:panel bodyClass="body3" height="300px" width="400px">
-				<rich:dataTable 
-                    onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
-                    onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
-                    cellpadding="0" cellspacing="0"
-                    width="480" border="0" var="quoteBean" value="#{quoteBean}" id="tblData" >
-                
-                    <f:facet name="header">
-                        <rich:columnGroup>
-                            <rich:column width="40%">
-                                <h:outputText value="Title"/>
-                            </rich:column>
-                            <rich:column width="15%">
-                                <h:outputText value="Bid"/>
-                            </rich:column>
-                            <rich:column width="15%">
-                                <h:outputText value="Ask" />
-                            </rich:column>
-                            <rich:column width="15%">
-                                <h:outputText value="Last" />
-                            </rich:column>
-                            <rich:column width="15%">
-                                <h:outputText value="TickVol" />
-                            </rich:column>
-                        </rich:columnGroup>
-                    </f:facet>
-                    <rich:subTable
+			<rich:panel bodyClass="body2" width="600px">
+			<rich:dataTable style="FONT-FAMILY: 'Tahoma';" width="100%">
+
+					<f:facet name="header">
+						<rich:columnGroup>
+							<rich:column width="13px">
+								<h:outputText value="" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="105px">
+								<h:outputText value="Contract"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="45px">
+								<h:outputText value="Bid" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';" />
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Bid Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Offer"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Offer Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Last"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Last Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="10px">
+								<h:outputText value="DOM"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+						</rich:columnGroup>
+					</f:facet>
+			</rich:dataTable>
+			</rich:panel>
+			<rich:panel bodyClass="body3" height="300px" width="600px">
+				<rich:dataTable
+					onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+					onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+					cellpadding="0" cellspacing="0" width="100%" border="0"
+					var="quoteBean" value="#{quoteBean}" id="tblData" style="FONT-FAMILY: 'Tahoma';">
+
+					<!-- f:facet name="header">
+						<rich:columnGroup>
+							<rich:column width="10px">
+								<h:outputText value="" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="100px">
+								<h:outputText value="Contract"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Bid" style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';" />
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Bid Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Offer"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Offer Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Last"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="30px">
+								<h:outputText value="Last Vol"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+							<rich:column width="10px">
+								<h:outputText value="DOM"  style="FONT-SIZE: 13px; FONT-FAMILY: 'Tahoma';"/>
+							</rich:column>
+						</rich:columnGroup>
+					</f:facet-->
+					<rich:subTable
                         onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
                         onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
                         var="quote" value="#{quoteBean.quotes}" id="tblSubTable">
+                        
                         <rich:column style="#{quote.rowStyle}">
-                            <h:outputText value="#{quote.title}"></h:outputText>
+                            <h:graphicImage value="/images/#{quote.icon}.png"/>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}" width="200px">
+                            <h:outputText value="#{quote.contract}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
                         </rich:column>
                         <rich:column style="#{quote.rowStyle}">
-                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon">
-                            	<h:outputText value="#{quote.bid}" style="#{quote.bidStyleClass}"></h:outputText>
-                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}"/>
+                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+                            	<h:outputText value="#{quote.bid}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.bidStyleClass}"></h:outputText>
+                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}" />
+                            	<rich:spacer width="10" height="5" rendered="#{!quote.bidUpdated}"/>
                             </h:panelGrid>
                         </rich:column>
                         <rich:column style="#{quote.rowStyle}">
-	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-	                            <h:outputText value="#{quote.ask}" style="#{quote.askStyleClass}"></h:outputText>
-	                            <h:graphicImage value="/images/#{quote.askStatus}.png" rendered="#{quote.askUpdated}"/>
+                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+                            	<h:outputText value="#{quote.bidVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.bidVolStyleClass}"></h:outputText>
+                            	<h:graphicImage value="/images/#{quote.bidVolStatus}.png" rendered="#{quote.bidVolUpdated}"/>
+                            	<rich:spacer width="10" height="5" rendered="#{!quote.bidVolUpdated}"/>
+                            </h:panelGrid>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}">
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+	                            <h:outputText value="#{quote.offer}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.offerStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.offerStatus}.png" rendered="#{quote.offerUpdated}"/>
+	                            <rich:spacer width="10" height="5" rendered="#{!quote.offerUpdated}"/>
 	                        </h:panelGrid>
                         </rich:column>
                         <rich:column style="#{quote.rowStyle}">
-	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-	                            <h:outputText value="#{quote.last}" style="#{quote.lastStyleClass}"></h:outputText>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+	                            <h:outputText value="#{quote.offerVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.offerVolStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.offerVolStatus}.png" rendered="#{quote.offerVolUpdated}"/>
+	                            <rich:spacer width="10" height="5" rendered="#{!quote.offerVolUpdated}"/>
+	                        </h:panelGrid>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}">
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+	                            <h:outputText value="#{quote.last}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.lastStyleClass}"></h:outputText>
 	                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
+	                            <rich:spacer width="10" height="5" rendered="#{!quote.lastUpdated}"/>
 	                        </h:panelGrid>
                         </rich:column>
                         <rich:column style="#{quote.rowStyle}">
-	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon">
-	                            <h:outputText value="#{quote.tickVol}" style="#{quote.tickVolStyleClass}"></h:outputText>
-	                            <h:graphicImage value="/images/#{quote.tickVolStatus}.png" rendered="#{quote.tickVolUpdated}"/>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+	                            <h:outputText value="#{quote.lastVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.lastVolStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.lastVolStatus}.png" rendered="#{quote.lastVolUpdated}"/>
+	                            <rich:spacer width="10" height="5" rendered="#{!quote.lastVolUpdated}"/>
 	                        </h:panelGrid>
+                        </rich:column>
+                        
+                        <rich:column style="#{quote.rowStyle}">
+                        	<a4j:commandLink style="COLOR: #0000ff;">
+                        		<h:outputText value="#{quote.dom}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+                        	</a4j:commandLink>
+                            
                         </rich:column>                
                     </rich:subTable>
-                </rich:dataTable>
+				</rich:dataTable>
     		</rich:panel>
-            <a4j:poll id="poll" interval="500" enabled="true" reRender="tblData" action="#{quoteBean.refreshScreen}"/>
+            <a4j:poll id="poll" interval="500" enabled="true" reRender="tblData,colIcon,colBid,colBidVol,colContract" action="#{quoteBean.refreshScreen}"/>
+			<rich:scrollableDataTable rowKeyVar="rkv" frozenColCount="1" height="400px" 
+				width="400px" id="tblData2" rows="15"
+				value="#{quoteBean.quotes}" var="quote" sortMode="single">
+
+						<rich:column style="#{quote.rowStyle}" id="colIcon">
+                            <h:graphicImage value="/images/#{quote.icon}.png"/>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}" width="200px" id="colContract">
+                        	<f:facet name="header"><h:outputText styleClass="headerText" value="Contract" /></f:facet>
+                            <h:outputText value="#{quote.contract}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}" id="colBid">
+                        	<f:facet name="header"><h:outputText styleClass="headerText" value="Bid" /></f:facet>
+                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+                            	<h:outputText value="#{quote.bid}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.bidStyleClass}"></h:outputText>
+                            	<h:graphicImage value="/images/#{quote.bidStatus}.png" rendered="#{quote.bidUpdated}" />
+                            	<rich:spacer width="10" height="5" rendered="#{!quote.bidUpdated}"/>
+                            </h:panelGrid>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}" id="colBidVol">
+                        	<f:facet name="header"><h:outputText styleClass="headerText" value="Bid Vol" /></f:facet>
+                        	<h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+                            	<h:outputText value="#{quote.bidVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.bidVolStyleClass}"></h:outputText>
+                            	<h:graphicImage value="/images/#{quote.bidVolStatus}.png" rendered="#{quote.bidVolUpdated}"/>
+                            	<rich:spacer width="10" height="5" rendered="#{!quote.bidVolUpdated}"/>
+                            </h:panelGrid>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}" id="colOffer">
+                        	<f:facet name="header"><h:outputText styleClass="headerText" value="Offer" /></f:facet>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+	                            <h:outputText value="#{quote.offer}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.offerStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.offerStatus}.png" rendered="#{quote.offerUpdated}"/>
+	                            <rich:spacer width="10" height="5" rendered="#{!quote.offerUpdated}"/>
+	                        </h:panelGrid>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}" id="colOfferVol">
+                        	<f:facet name="header"><h:outputText styleClass="headerText" value="Offer Vol" /></f:facet>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+	                            <h:outputText value="#{quote.offerVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.offerVolStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.offerVolStatus}.png" rendered="#{quote.offerVolUpdated}"/>
+	                            <rich:spacer width="10" height="5" rendered="#{!quote.offerVolUpdated}"/>
+	                        </h:panelGrid>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}" id="colLast">
+                        	<f:facet name="header"><h:outputText styleClass="headerText" value="Last" /></f:facet>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+	                            <h:outputText value="#{quote.last}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.lastStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.lastStatus}.png" rendered="#{quote.lastUpdated}"/>
+	                            <rich:spacer width="10" height="5" rendered="#{!quote.lastUpdated}"/>
+	                        </h:panelGrid>
+                        </rich:column>
+                        <rich:column style="#{quote.rowStyle}" id="colLastVol">
+                        	<f:facet name="header"><h:outputText styleClass="headerText" value="Last Vol" /></f:facet>
+	                        <h:panelGrid columns="2" columnClasses="colValue, colIcon" width="100%">
+	                            <h:outputText value="#{quote.lastVol}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';#{quote.lastVolStyleClass}"></h:outputText>
+	                            <h:graphicImage value="/images/#{quote.lastVolStatus}.png" rendered="#{quote.lastVolUpdated}"/>
+	                            <rich:spacer width="10" height="5" rendered="#{!quote.lastVolUpdated}"/>
+	                        </h:panelGrid>
+                        </rich:column>
+                        
+                        <rich:column style="#{quote.rowStyle}" id="colDom">
+                        	<f:facet name="header"><h:outputText styleClass="headerText" value="Dom" /></f:facet>
+                        	<a4j:commandLink style="COLOR: #0000ff;">
+                        		<h:outputText value="#{quote.dom}" style="FONT-SIZE: 12px; FONT-FAMILY: 'Tahoma';"></h:outputText>
+                        	</a4j:commandLink>
+                            
+                        </rich:column>
+
+			</rich:scrollableDataTable>
 		</a4j:form>
 	</f:view>
 </body>
