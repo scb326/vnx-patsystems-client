@@ -68,3 +68,15 @@
 .col2 {
 	width: 5%; 
 }
+
+  .body2 {
+   width:800px;
+   padding:0px;margin:0px;
+   overflow: auto;
+  }
+.colHeader1 {
+	width: 98%;
+}
+.colHeader2 {
+	width: 2%; 
+}
