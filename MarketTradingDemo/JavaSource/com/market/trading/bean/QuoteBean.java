@@ -16,7 +16,7 @@ import com.vnx.patsystems.util.PatsystemsUtilDelegate;
 public class QuoteBean implements PatsystemsUtilDelegate {
 	public static final String TRADING = "TRADE";
 	public static final String ORDERING = "ORDER";
-	public static final String INC_CELL_STYLE = "color:green;";
+	public static final String INC_CELL_STYLE = "color:blue;";
 	public static final String DEC_CELL_STYLE = "color:red;";
 	public static final String ROW_UPDATED_STYLE = "background-color:#FFFFC4;";
 	
